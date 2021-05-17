@@ -1,5 +1,5 @@
 class Customers::DeliveriesController < ApplicationController
-  
+
   def index
     @delivery = Delivery.new
     @deliveries = current_customer.deliveries
@@ -36,6 +36,6 @@ class Customers::DeliveriesController < ApplicationController
   private
 
     def delivery_params
-      params.require(:delivery).permit(:delivery_postcode, :delivery_address, :delivery_name)
+      params.require(:delivery).permit(:postcode, :address, :name)
     end
 end
