@@ -4,4 +4,8 @@ class Delivery < ApplicationRecord
 
   validates :customer_id, :name, :address, presence: true
 
+  def delivery_full_address
+    '〒' + self.postcode + ' ' + self.address + ' ' + self.name
+  end
+
 end
