@@ -1,33 +1,21 @@
 class Customers::CartItemsController < ApplicationController
-  
+  before_action :authenticate_customer!
   def create
     @cart_item = current_customer.cart_items.new(cart_items_params)
-    # cart_items_new = current_customer.cart_items.find_by(item_id: @cart_item.item_id)
+    cart_items_new = current_customer.cart_items.find_by(item_id: @cart_item.item_id)
+    
+    
+    if cart_items_new.nil?
+      @cart_item.save
+      redirect_to cart_items_path
+    else
+      # 商品名が同じ場合、数量を合計値にする
+      total_quantity = (@cart_item.quantity + cart_items_new.quantity).to_i
+      cart_items_new.update(quantity: total_quantity)
+      @cart_item.destroy
+      redirect_to cart_items_path
 
-    # if cart_items_new.nil?
-    #   @cart_item.save
-    #   redirect_to customers_cart_items_path
-    # else
-    #   total_quantity = (@cart_item.quantity + cart_items_new.quantity).to_i
-    #   cart_items_new.update(:quantity,total_quantity)
-    #   @cart_item.destroy
-    #   redirect_to customers_cart_items_path
-
-    # end
-
-
-    # @cart_items = current_customer.cart_items.all
-
-    # @cart_items.each do |cart_item|
-    #   if cart_item.item_id == @cart_item.item_id
-    #     total_quantity = cart_item.quantity + @cart_item.quantity
-    #     cart_item.update(:quantity, total_quantity)
-    #     # byebug
-    #     @cart_item.destroy
-    #   end
-    # end
-    @cart_item.save
-    redirect_to cart_items_path
+    end
   end
 
 
