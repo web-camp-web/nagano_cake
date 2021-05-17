@@ -37,6 +37,20 @@ module ApplicationHelper
     return price
   end
 
+  def order_items_sub_price(order_item_id)
+    order_item = OrderItem.find_by(id: order_item_id)
+    tax_price(order_item.item.id) * order_item.quantity
+  end
+
+  def order_items_total_price(order_id)
+    price = 0
+    order_items = OrderItem.where(order_id: order_id)
+    order_items.each do |order_item|
+      price  +=  (order_item.market_price * order_item.quantity)
+    end
+    return price
+  end
+
   def billing(customer_id)
     cart_items_total_price(customer_id) + postage
   end

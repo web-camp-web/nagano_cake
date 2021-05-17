@@ -39,8 +39,6 @@ class Customers::OrdersController < ApplicationController
 
   def create
     order = Order.create(order_params)
-    #cart_items = CartItem.where(customer_id: current_customer.id)
-
 
     current_customer.cart_items.each do |cart_item|
 
@@ -50,6 +48,9 @@ class Customers::OrdersController < ApplicationController
         quantity: cart_item.quantity,
         market_price: cart_item.item.price
         )
+
+      #cart_item.destroy
+
     end
 
     redirect_to orders_complete_path
@@ -59,6 +60,11 @@ class Customers::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find_by(params[:id])
+    @order_items = @order.order_items
+    if (@order.customer != current_customer) && @order.blank?
+      redirect_to root_path
+    end
   end
 
   def index
