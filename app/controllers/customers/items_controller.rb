@@ -1,7 +1,14 @@
 class Customers::ItemsController < ApplicationController
+  
   def index
+    @items = Item.all
   end
-
+  
   def show
-  end
+    @item = Item.find(params[:id])
+    @total_price = (@item.price * 1.1).to_i
+    @cart_item = CartItem.new
+    
+  end 
+
 end

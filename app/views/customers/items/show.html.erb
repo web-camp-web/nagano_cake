@@ -1,2 +1,13 @@
-<h1>Customers::Items#show</h1>
-<p>Find me in app/views/customers/items/show.html.erb</p>
+<h1>商品詳細</h1>
+
+<h2><%= @item.name %></h2>
+<h2><%= @item.caption %></h2>
+<p>💲<%= @total_price %>（税込）</p>
+
+
+<%= form_with model: @cart_item, url: cart_items_path,local: true do |f| %>
+<%= f.select :quantity,options_for_select(1..10), prompt: "選択してください" %>
+<%= f.hidden_field :customer_id, value: current_customer.id %>
+<%= f.hidden_field :item_id, value: @item.id %>
+<%= f.submit "カートに入れる" %>
+<% end %>
