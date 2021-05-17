@@ -41,7 +41,7 @@
             </tr>
             <tr>
               <th>ご請求金額</th>
-              <td><%= order_items_total_price(@order.id).to_s(:delimited) %>円</td>
+              <td><%= (@order.total_price + postage).to_s(:delimited) %>円</td>
             </tr>
         </table>
     </div>
@@ -60,7 +60,7 @@
         	<% @order_items.each do |order_item| %>
             <tr>
   	          <td><%= order_item.item.name %></td>
-  	          <td><%= tax_price(order_item.item.id).to_s(:delimited) %>円</td>
+  	          <td><%= tax_market_price(order_item.id).to_s(:delimited) %>円</td>
   	          <td><%= order_item.quantity %></td>
   	          <td><%= order_items_sub_price(order_item.id).to_s(:delimited) %>円</td>
             </tr>

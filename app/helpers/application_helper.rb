@@ -3,9 +3,8 @@ module ApplicationHelper
     800
   end
 
-  #現状は軽減税率対象品のみのため消費税8％
   def tax
-    0.08
+    0.1
   end
 
   def customer_full_name(customer_id)
@@ -19,8 +18,13 @@ module ApplicationHelper
   end
 
   def tax_price(item_id)
-    market_price = Item.find_by(id: item_id).price
-    ( market_price * (1 + tax) ).floor
+    price = Item.find_by(id: item_id).price
+    ( price * (1 + tax) ).floor
+  end
+
+  def tax_market_price(order_item_id)
+    order_item = OrderItem.find_by(id: order_item_id)
+    ( order_item.market_price * (1 + tax) ).floor
   end
 
   def sub_price(cart_item_id)
@@ -40,15 +44,6 @@ module ApplicationHelper
   def order_items_sub_price(order_item_id)
     order_item = OrderItem.find_by(id: order_item_id)
     tax_price(order_item.item.id) * order_item.quantity
-  end
-
-  def order_items_total_price(order_id)
-    price = 0
-    order_items = OrderItem.where(order_id: order_id)
-    order_items.each do |order_item|
-      price  +=  (order_item.market_price * order_item.quantity)
-    end
-    return price
   end
 
   def billing(customer_id)

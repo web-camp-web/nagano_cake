@@ -60,7 +60,7 @@ class Customers::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by(params[:id])
+    @order = Order.find_by(id: params[:id])
     @order_items = @order.order_items
     if (@order.customer != current_customer) && @order.blank?
       redirect_to root_path
