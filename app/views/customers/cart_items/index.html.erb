@@ -1,2 +1,34 @@
-<h1>Customers::CartItems#index</h1>
-<p>Find me in app/views/customers/cart_items/index.html.erb</p>
+
+<h1>ショッピングカート</h1>
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @sum = 0 %>
+    <% @cart_items.each do |cart_item| %>
+    <tr>
+      <td><%= cart_item.item.name %></td>
+      <td><%= (cart_item.item.price * @tax).to_i %>円</td>
+      <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :put, local: true do |f| %>
+      <td><%= f.number_field :quantity, min: 1, max: 10 %></td>
+      <td><%= f.submit "数量変更" %></td>
+      <% end %>
+      <td><%= (cart_item.item.price * @tax).to_i * (cart_item.quantity ).to_i %>円</td>
+      <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete %></td>
+
+      <% @sum += (cart_item.item.price * @tax).to_i * (cart_item.quantity ).to_i %>
+    </tr>
+    <% end %>
+    <h3>合計　：　<%= @sum %>円</h3>
+    <h4><%= link_to "全て削除", all_destroy_path, method: :delete %></h4>
+  </tbody>
+</table>
