@@ -1,4 +1,5 @@
-<h2 class="page-header">
+<div class="container">
+  <h2 class="page-header">
     <%= customer_full_name(@customer.id) %>さんの会員詳細
   </h2>
   <div class="row">
@@ -43,10 +44,9 @@
         </tr>
       </tbody>
     </table>
-  </div>
-
-  <div>
-    <%= link_to "編集する",edit_admin_customer_path(@customer.id), class: "btn btn-success" %>
-    <%= link_to " 注文履歴一覧を見る", admin_orders_path, class: "btn btn-primary" %>
+    <div>
+      <%= link_to "編集する",edit_admin_customer_path(@customer.id), class: "btn btn-success" %>
+      <%= link_to " 注文履歴一覧を見る", admin_orders_path, class: "btn btn-primary" %>
+    </div>
   </div>
 </div>
