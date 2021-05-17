@@ -1,7 +1,14 @@
+<div class="container">
 <h1>ジャンル編集</h1>
-
-<p>ジャンル名</p>
-<%= form_with model: [:admin, @genre],method: :put, locla: true do |f| %>
-<%= f.text_field :name %>
-<%= f.submit "変更を保存" %>
-<% end %>
+  <div class="row">
+    <div class="col">
+      <tr>
+        <th>ジャンル名</th>
+        <%= form_with model: [:admin, @genre],method: :put, locla: true do |f| %>
+          <th><%= f.text_field :name %></th>
+          <th><%= f.submit "変更を保存" %></th>
+        <% end %>
+      </tr>
+    </div>
+  </div>
+</div>

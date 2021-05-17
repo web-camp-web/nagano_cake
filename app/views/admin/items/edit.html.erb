@@ -1,18 +1,5 @@
+<div class="container">
+
 <h1>商品編集</h1>
+<%= render 'form', item:@item, genres:@genres%>
 
-<%= form_with model: [:admin,@item],method: :put, local: true do |f| %>
-<%= f.attachment_field :image %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.label :caption %>
-<%= f.text_area :caption %>
-
-<%= f.label "ジャンル選択" %>
-<%= f.collection_select :genre_id, @genres, :id, :name, prompt: "選択してください" %>
-
-<%= f.label "税込価格" %>
-<P><%= f.text_field :price %>円</p>
-<p>販売中<%= f.radio_button :is_active, true %></p>
-<p>販売停止中<%= f.radio_button :is_active, false %></p>
-<%= f.submit '送信' %>
-<% end %>
