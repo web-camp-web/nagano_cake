@@ -1,13 +1,75 @@
 class Customers::OrdersController < ApplicationController
-  def index
+  include ApplicationHelper
+
+  def new
+    @order = Order.new
+    @my_postcode = current_customer.postcode
+    @my_address = current_customer.address
+    @deliveries = Delivery.where(customer_id: current_customer.id)
+
+    cart_item = current_customer.cart_item
+    if cart_item.empty?
+      redirect_to cart_items_path
+    end
+  end
+
+  def confirm
+    @cart_items = CartItem.where(customer_id: current_customer.id)
+    @order = Order.new(order_params)
+
+    address = params[:order][:delivery_address]
+    case address
+    when "自宅"
+      @order.delivery_postcode = current_customer.postcode
+      @order.delivery_address = current_customer.address
+      @order.delivery_name = customer_full_name(current_customer.id)
+    when "登録済住所"
+      delivery_id = params[:order][:delivery_address_id]
+      delivery = Delivery.find_by(id: delivery_id)
+      @order.delivery_postcode = delivery.postcode
+      @order.delivery_address = delivery.address
+      @order.delivery_name = delivery.name
+    when "新しい届け先"
+      @order.delivery_postcode = params[:order][:new_postcode]
+      @order.delivery_address = params[:order][:new_address]
+      @order.delivery_name = params[:order][:new_name]
+    end
+  end
+
+  def create
+    order = Order.create(order_params)
+    cart_items = CartItem.where(customer_id: current_customer.id)
+
+    cart_items.each do |cart_item|
+      order_item = OrderItem.new
+      order_item.order_id = order.id
+      order_item.item_id = cart_item.item_id
+      order_item.quantity = cart_item.quantity
+      order_item.market_price = cart_item.item.price
+      order_item.save
+      cart_item.destroy
+
+      OrderItem.create(
+        order_id: order.id,
+        item_id: cart_item.item_id,
+        quantity: cart_item.quantity,
+        market_price: cart_item.item.price
+        )
+    end
+
+    redirect_to order_complete_path
+  end
+
+  def complete
   end
 
   def show
   end
 
-  def new
-  end
+  private
 
-  def complete
+  def order_params
+   params.require(:order).permit(:customer_id, :postage, :total_price, :payment_method, :status,
+                                 :delivery_name, :delivery_postcode, :delivery_address)
   end
 end
