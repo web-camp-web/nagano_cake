@@ -24,9 +24,9 @@ devise_for :admins, controllers: {
     resources :customers, only: [:show, :edit, :update]
     get 'customers/:id/destroy_confirm' => 'customers#destroy_confirm', as: :destroy_confirm
     patch 'customers/:id/withdraw' => 'customers#withdraw', as: :withdraw
-    resources :orders, only: [:index, :show, :new, :create]
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete', as: :orders_complete
+    resources :orders, only: [:index, :show, :new, :create]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :update, :create, :destroy]
     delete 'cart_items' => 'cart_items#all_destroy', as: :all_destroy
