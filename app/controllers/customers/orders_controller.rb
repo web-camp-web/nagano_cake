@@ -1,6 +1,8 @@
 class Customers::OrdersController < ApplicationController
   include ApplicationHelper
 
+  before_action :authenticate_customer!
+
   def new
     @order = Order.new
     @my_postcode = current_customer.postcode
@@ -37,16 +39,10 @@ class Customers::OrdersController < ApplicationController
 
   def create
     order = Order.create(order_params)
-    cart_items = CartItem.where(customer_id: current_customer.id)
+    #cart_items = CartItem.where(customer_id: current_customer.id)
 
-    cart_items.each do |cart_item|
-      order_item = OrderItem.new
-      order_item.order_id = order.id
-      order_item.item_id = cart_item.item_id
-      order_item.quantity = cart_item.quantity
-      order_item.market_price = cart_item.item.price
-      order_item.save
-      cart_item.destroy
+
+    current_customer.cart_items.each do |cart_item|
 
       OrderItem.create(
         order_id: order.id,
@@ -56,7 +52,7 @@ class Customers::OrdersController < ApplicationController
         )
     end
 
-    redirect_to order_complete_path
+    redirect_to orders_complete_path
   end
 
   def complete

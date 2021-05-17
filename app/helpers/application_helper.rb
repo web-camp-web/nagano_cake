@@ -18,18 +18,6 @@ module ApplicationHelper
     "#{customer.postcode} " + customer.address
   end
 
-  def deliveries_full_address(customer_id)
-    deliveries = Delivery.where(customer_id: customer_id)
-    deliveries.each do |delivery|
-      "#{delivery.postcode} " + "#{delivery.address} " + delivery.name
-    end
-  end
-
-  def delivery_full_address(delivery_id)
-    delivery = Delivery.find_by(id: delivery_id)
-    "#{delivery.postcode} " + "#{delivery.address} " + delivery.name
-  end
-
   def tax_price(item_id)
     market_price = Item.find_by(id: item_id).price
     ( market_price * (1 + tax) ).floor

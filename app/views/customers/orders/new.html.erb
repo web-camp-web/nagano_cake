@@ -20,7 +20,8 @@
         <%= f.radio_button :delivery_address, :"登録済住所" %>
         <label>登録済住所から選択</label>
         <% if @deliveries.exists? %>
-          <%=f.collection_select :delivery_address_id, @deliveries, :id, :address %>
+          <%=f.collection_select :delivery_address_id, @deliveries, :id, :delivery_full_address %>
+          <!--%=f.collection_select :delivery_address_id, @deliveries, :id, delivery_full_address(:id) %-->
         <% else %>
           <p>登録済住所はありません</p>
         <% end %>
