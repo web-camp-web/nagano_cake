@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  
-  
+
+
 devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
@@ -22,7 +22,7 @@ devise_for :admins, controllers: {
 
   scope module: :customers do
     resources :customers, only: [:show, :edit, :update]
-    get 'customers/:id/destroy_confirm' => 'customers#destroy_confirm'
+    get 'customers/:id/destroy_confirm' => 'customers#destroy_confirm', as: :destroy_confirm
     patch 'customers/:id/withdraw' => 'customers#withdraw', as: :withdraw
     resources :orders, only: [:index, :show, :new, :create]
     post 'orders/confirm' => 'orders#confirm'
@@ -31,11 +31,11 @@ devise_for :admins, controllers: {
     resources :cart_items, only: [:index, :update, :create, :destroy]
     delete 'cart_items' => 'cart_items#all_destroy', as: :all_destroy
     resources :deliveries, only: [:index, :create, :destroy, :edit, :update]
-    
+
     root to: 'homes#top'
     get 'about' => 'homes#about'
  end
 
 
-  
+
 end
