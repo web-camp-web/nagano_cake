@@ -7,8 +7,7 @@ class Customers::OrdersController < ApplicationController
     @my_address = current_customer.address
     @deliveries = Delivery.where(customer_id: current_customer.id)
 
-    cart_item = current_customer.cart_item
-    if cart_item.empty?
+    if current_customer.cart_items.empty?
       redirect_to cart_items_path
     end
   end
