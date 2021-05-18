@@ -49,7 +49,7 @@ class Customers::OrdersController < ApplicationController
         market_price: cart_item.item.price
         )
 
-      #cart_item.destroy
+      cart_item.destroy
 
     end
 

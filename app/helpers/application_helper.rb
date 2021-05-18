@@ -17,6 +17,11 @@ module ApplicationHelper
     "#{customer.postcode} " + customer.address
   end
 
+  def delivery_full_address(order_id)
+    order = Order.find_by(id: order_id)
+    "〒#{order.delivery_postcode} " + order.delivery_address
+  end
+
   def tax_price(item_id)
     price = Item.find_by(id: item_id).price
     ( price * (1 + tax) ).floor

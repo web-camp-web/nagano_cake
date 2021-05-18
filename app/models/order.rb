@@ -7,5 +7,17 @@ class Order < ApplicationRecord
 
   has_many :order_items
 
-  # has_many :items, thorough: :order_items
+  def order_item_status_auto_update
+    if self.status == "入金確認"
+      self.order_items.each do |order_item|
+        order_item.update_attributes(product_status: "製作待ち")
+      end
+    #デフォルトで「着手不可」にはなるが、誤って「入金確認」を押した際に製作ステータスを再度「着手不可」へ戻すために以下が必要
+    elsif self.status == "入金待ち"
+      self.order_items.each do |order_item|
+        order_item.update_attributes(product_status: "着手不可")
+      end
+    end
+  end
+
 end
