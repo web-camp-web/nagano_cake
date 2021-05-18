@@ -3,8 +3,8 @@
     <div>
       <h2 class="page-header">注文履歴一覧</h2>
         <% if @orders.present? %>
-          <table>
-            <thead>
+          <table class="table table-hover table-bordered">
+            <thead class="thead-light">
               <tr>
                 <th>注文日</th>
                 <th>配送先</th>
@@ -21,7 +21,7 @@
     		            <%= order.created_at.strftime('%Y/%m/%d') %>
     		          </td>
     		          <td>
-    		            <%= order.delivery_postcode %></br>
+    		            <%= "〒#{order.delivery_postcode}" %></br>
     		            <%= order.delivery_address %></br>
     		            <%= order.delivery_name %>
     		          </td>
