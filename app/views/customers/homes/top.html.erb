@@ -1,2 +1,26 @@
-<h1>Customers::Homes#top</h1>
-<p>Find me in app/views/customers/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <p>ようこそ、ながのCAKEへ！<br>
+      このサイトは、ケーキ販売のECサイトになります。<br>
+      会員でない方も商品の閲覧はできますが、<br>
+      購入には会員登録が必要になります。</p>
+    </div>
+  </div>
+  <div>
+    <h3>新着商品</h3>
+
+      <% @items.each do |item| %>
+      <div>
+        <strong class="col-3">
+          <%= attachment_image_tag item, :image %><br>
+          <%= link_to item.name, item_path(item.id) %><br>
+          <%= item.price %>
+        </strong>
+      </div>
+
+      <% end %>
+
+
+  </div>
+</div>
