@@ -15,9 +15,9 @@ devise_for :admins, controllers: {
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:index, :show, :update]
+    resources :order_items, only: [:update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :order_details, only: [:update]
   end
 
   scope module: :customers do
