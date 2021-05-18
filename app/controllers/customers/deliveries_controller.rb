@@ -6,10 +6,12 @@ class Customers::DeliveriesController < ApplicationController
   end
 
   def create
-    @delivery = current_customer.deliveries.new(delivery_params)
+    @delivery = Delivery.new(delivery_params)
+    @delivery.customer_id = current_customer.id
     if @delivery.save
       redirect_back(fallback_location: root_path)
     else
+      @deliveries = current_customer.deliveries
       render :index
     end
   end
