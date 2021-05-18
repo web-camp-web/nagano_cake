@@ -1,13 +1,21 @@
-<h1>商品詳細</h1>
-<%= attachment_image_tag @item, :image %>
-<h3><%= @item.name %></h3>
-<p><%= @item.caption %></p>
-<p>💲<%= @total_price %>（税込）</p>
-
-
-<%= form_with model: @cart_item, url: cart_items_path,local: true do |f| %>
-<%= f.select :quantity,options_for_select(1..10), prompt: "選択してください" %>
-<%= f.hidden_field :customer_id, value: current_customer.id %>
-<%= f.hidden_field :item_id, value: @item.id %>
-<%= f.submit "カートに入れる" %>
-<% end %>
+<div class="container">
+  <h1>商品詳細</h1>
+  <div class="row">
+    <div class="col-md-2">
+      <%= attachment_image_tag @item, :image %>
+    </div>
+    <div class="col-md-8 offset-md-2">
+      <h3><%= @item.name %></h3>
+      <p><%= @item.caption %></p>
+      <p>💲<%= @total_price %>（税込）</p>
+      <div class="form-group">
+        <%= form_with model: @cart_item, url: cart_items_path,local: true do |f| %>
+        <%= f.select :quantity,options_for_select(1..10), prompt: "選択してください" %>
+        <%= f.hidden_field :customer_id, value: current_customer.id %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= f.submit "カートに入れる", class: 'btn btn-success' %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
