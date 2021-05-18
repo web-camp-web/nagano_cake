@@ -1,22 +1,21 @@
 <div class="container">
   <div colass="row">
-    <div>
-      <h2>配送先編集</h2>
+    <h2>配送先編集</h2>
+  </div>
       <%= form_with model: @delivery, url: delivery_path, method: :patch, local: true do |f| %>
-        <div>
-          <%= f.label :"郵便番号(ハイフンなし)" %>
-          <%= f.text_field :postcode %>
+        <div class="row form-group">
+          <%= f.label :"郵便番号(ハイフンなし)", class: "col-form-label col-form-label-sm col-2" %>
+          <%= f.text_field :postcode, class: "form-control form-control-sm col-2"  %>
         </div>
-        <div>
-          <%= f.label :"住所" %>
-          <%= f.text_field :address %>
+        <div class="row form-group">
+          <%= f.label :"住所", class: "col-form-label col-form-label-sm col-2" %>
+          <%= f.text_field :address, class: "form-control form-control-sm col-5" %>
         </div>
-        <div>
-          <%= f.label :"宛名" %>
-          <%= f.text_field :name %>
-          <%= f.submit :"変更内容を保存" %>
+        <div class="row form-group">
+          <%= f.label :"宛名", class: "col-form-label col-form-label-sm col-2" %>
+          <%= f.text_field :name, class: "form-control form-control-sm col-2" %>
+          <%= f.submit :"変更内容を保存", class: "btn btn-success btn-sm col-2 offset-4" %>
         </div>
       <% end %>
-    </div>
-  </div>
+
 </div>
