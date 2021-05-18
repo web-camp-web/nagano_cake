@@ -1,10 +1,11 @@
 <div class="container">
   <h2 class="page-header">会員一覧</h2>
   <div class="row">
-    <div class="col-xs-10 col-xs-offset-1">
+    <div class="col-lg-2 col-md-1 col-sm-0"></div>
+    <div class="col-lg-8 col-md-10 col-sm-12">
       <% if @customers.exists? %>
-        <table class="table table-hover table-bordered table-condensed">
-          <thead>
+        <table class="table table-hover">
+          <thead class="thead-light">
             <tr>
               <th>会員ID</th>
               <th>氏名</th>
@@ -25,9 +26,9 @@
                 <td><%= customer.email %></td>
                 <td>
                   <% if customer.is_valid == true %>
-                    <p>有効</p>
+                    <p class="text-success">有効</p>
                   <% else %>
-                    <p>退会</p>
+                    <p class="text-muted">退会</p>
                   <% end %>
                 </td>
               </tr>
@@ -39,5 +40,6 @@
       <% end %>
     </div>
     <%= paginate(@customers) %>
+    <div class="col-lg-2 col-md-1 col-sm-0"></div>
   </div>
 </div>
