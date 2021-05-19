@@ -28,7 +28,6 @@
   background-color: #EEE;
   disply: inline-block;
   padding: 0 2%;
-  margin-left: 5%;
 }
 
 /*customer sign_up*/
@@ -59,4 +58,42 @@
 .sign-in-leading {
   margin-top: 1.5%;
   margin-left: 19%;
+}
+
+/*customer info*/
+
+.mypage {
+  margin-left: 13%;
+}
+
+.customer-info {
+  margin-top: 2%;
+}
+
+.customer-info-table {
+  table-layout: fixed;
+  th {
+    width: 15%;
+    background-color: #EEE;
+    border: solid 1px;
+  }
+  td {
+    width: 40%;
+    border: solid 1px;
+    overflow: scroll;
+  }
+}
+
+.customer-strong {
+  font-size: 19px;
+}
+
+.customer-edit-btn{
+  padding: 0.3% 2.3%;
+  margin-left: 3%;
+}
+
+.customer-info-btn {
+  padding: 0.3% 3.6%;
+  margin-left: -5%;
 }
