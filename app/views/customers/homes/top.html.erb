@@ -1,26 +1,31 @@
+<div class="top-container">
 <div class="container">
   <div class="row">
     <div class="col-md-12 text-center">
-      <p>ようこそ、ながのCAKEへ！<br>
-      このサイトは、ケーキ販売のECサイトになります。<br>
-      会員でない方も商品の閲覧はできますが、<br>
-      購入には会員登録が必要になります。</p>
+      <div class="top-image">
+        <div class="image-text">
+          <p>ようこそ、ながのCAKEへ！<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。</p>
+        </div>
+      </div>
     </div>
   </div>
-  <div>
-    <h3>新着商品</h3>
-
+  <div class="top-main mt-5">
+  <h3>〜新着商品〜</h3>
+    <div class="row">
       <% @items.each do |item| %>
-      <div>
+      <div class="top-box text-center">
         <strong class="col-3">
-          <%= attachment_image_tag item, :image %><br>
+          <%= attachment_image_tag item, :image, :fill, 250, 250 %><br>
           <%= link_to item.name, item_path(item.id) %><br>
-          <%= item.price %>
+          <%= item.price %>円
         </strong>
       </div>
 
       <% end %>
-
-
+    </div>
   </div>
+</div>
 </div>

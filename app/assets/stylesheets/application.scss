@@ -17,3 +17,167 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.page-header {
+  font-size: 22px;
+  background-color: #EEE;
+  disply: inline-block;
+  padding: 0 2%;
+}
+
+/*customer top*/
+.top-container{
+  background-color: #F5F5F5;
+  height: 100%;
+  padding-top: 15px;
+  background-image: url('underwater-4286600_1920.jpg');
+  background-size: 100% 100%;
+}
+
+.top-image{
+  background-image: url('ballerina-3055155_1920.jpg');
+  background-size: 100% 100%;
+  width: 100%;
+  height: 570px;
+  position: relative;
+  opacity: 0.6;
+}
+
+/*customer sign_up*/
+.sign-up-header {
+  margin-left: 5%;
+}
+
+.sign-up-leading {
+  margin-top: 1.5%;
+  margin-left: 10%;
+}
+
+/*customer sign_in*/
+.sign-in-header {
+  margin-left: 5%;
+}
+
+.page-small-header {
+  font-size: 17px;
+  background-color: #EEE;
+  disply: inline-block;
+  padding: 0 2%;
+  margin-left: 7%;
+}
+
+.customer-sign-in-label {
+  margin-left: 13%;
+}
+
+.customer-sign-in-btn {
+  margin-top: 1%;
+  margin-left: 29.7%;
+  width: 135px;
+}
+
+.sign-in-leading {
+  margin-top: 1.5%;
+  margin-left: 19%;
+}
+
+/*customer info*/
+
+.mypage {
+  margin-left: 13%;
+}
+
+.customer-info {
+  margin-top: 2%;
+}
+
+.customer-info-table {
+  table-layout: fixed;
+  th {
+    width: 15%;
+    background-color: #EEE;
+    border: solid 1px;
+  }
+  td {
+    width: 40%;
+    border: solid 1px;
+    overflow: scroll;
+  }
+}
+
+.customer-strong {
+  font-size: 19px;
+}
+
+.customer-edit-btn{
+  padding: 0.3% 2.3%;
+  margin-left: 3%;
+}
+
+.customer-info-btn {
+  padding: 0.3% 3.6%;
+  margin-left: -5%;
+}
+
+/*customer edit*/
+.mypage-edit {
+  margin-left: 5%;
+}
+
+/*customer delivery_index*/
+.delivery-index {
+  margin-left: 13%;
+}
+
+.delivery-new {
+  margin-top: 3%;
+  margin-left: 3%;
+}
+
+.delivery-new-btn {
+  padding: 0.3% 2.8%;
+
+}
+
+.delivery-info {
+  margin-top: 5%;
+}
+
+.delivery-table {
+  table-layout: fixed;
+  th {
+    background-color: #EEE;
+    border: solid 1px;
+  }
+  td {
+    overflow: scroll;
+    border: solid 1px;
+  }
+}
+
+.delivery-postcode {
+  width: 15%;
+}
+
+.delivery-address {
+  width: 38%;
+
+}
+
+.delivery-name {
+  width: 15%;
+}
+
+/*customer delivery_edit*/
+.delivery-edit {
+  margin-left: 8%;
+}
+
+.delivery-edit-btn {
+  padding: 0.3% 1.5%;
+}
