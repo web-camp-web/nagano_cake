@@ -8,12 +8,17 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(params_item)
-    @item.save
-    redirect_to admin_items_path
+    if @item.save
+      redirect_to admin_item_path(@item)
+    else
+      @genres = Genre.all
+      render :new
+    end
+
   end
 
   def index
-    @items = Item.all
+    @items = Item.page(params[:page]).per(10)
   end
 
   def show
@@ -26,8 +31,13 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
-    Item.find(params[:id]).update(params_item)
-    redirect_to admin_items_path
+    @item = Item.find(params[:id])
+    if @item.update(params_item)
+      redirect_to admin_item_path(@item)
+    else
+      @genres = Genre.all
+      render :edit
+    end 
   end
 
   private
