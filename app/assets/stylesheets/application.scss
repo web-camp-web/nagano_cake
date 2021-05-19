@@ -110,3 +110,47 @@
 .mypage-edit {
   margin-left: 5%;
 }
+
+/*customer delivery_index*/
+.delivery-index {
+  margin-left: 13%;
+}
+
+.delivery-new {
+  margin-top: 3%;
+  margin-left: 3%;
+}
+
+.delivery-new-btn {
+  padding: 0.3% 2.8%;
+
+}
+
+.delivery-info {
+  margin-top: 5%;
+}
+
+.delivery-table {
+  table-layout: fixed;
+  th {
+    background-color: #EEE;
+    border: solid 1px;
+  }
+  td {
+    overflow: scroll;
+    border: solid 1px;
+  }
+}
+
+.delivery-postcode {
+  width: 15%;
+}
+
+.delivery-address {
+  width: 38%;
+
+}
+
+.delivery-name {
+  width: 15%;
+}
