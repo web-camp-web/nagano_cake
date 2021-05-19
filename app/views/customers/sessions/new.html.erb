@@ -1,23 +1,29 @@
-<h2>ログイン</h2>
-<h3>会員の方はこちらから</h3>
-<%= flash[:error] %>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :"メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+  <div class="row">
+    <h2 class="page-header">ログイン</h2>
   </div>
-
-  <div class="field">
-    <%= f.label :"パスワード" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="row">
+    <h3 class="page-small-header">会員の方はこちらから</h3>
   </div>
+  <%= flash[:error] %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="row form_group">
+      <%= f.label :"メールアドレス", class: "col-2 offset-1 col-form-label " %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "col-4 form-control form-control-sm" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
+    <div class="row form_group">
+      <%= f.label :"パスワード", class: "col-2 offset-1 col-form-label" %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class: "col-4 form-control form-control-sm" %>
+    </div>
 
-<div>
-  <h2>会員登録がお済みでない方</h2>
-  <p><%= render "customers/shared/links" %>から新規登録を行ってください。</p>
+    <div class="row form_group">
+      <%= f.submit "ログイン", class: "col-1 offset-3 btn btn-primary btn-sm"%>
+    </div>
+  <% end %>
+    <div>
+      <h3 class="page-small-header">会員登録がお済みでない方</h3>
+      <p>　　　　<%= render "customers/shared/links" %>から新規登録を行ってください。</p>
+    </div>
+
 </div>
