@@ -5,6 +5,14 @@
     <h4 class="col-4"><%= link_to "カートを空にする", all_destroy_path, method: :delete, class: 'btn btn-danger' %></h4>
   </div>
   <div class="row">
+    
+    
+
+    <% if flash[:notice] %>
+     <p id="notice">
+       <%= flash[:notice] %>
+     </p>
+   <% end %>
     <table class="table table-danger table-striped">
       <thead>
         <tr>
