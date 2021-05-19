@@ -5,6 +5,14 @@
     <h4 class="col-4"><%= link_to "カートを空にする", all_destroy_path, method: :delete, class: 'btn btn-danger' %></h4>
   </div>
   <div class="row">
+    
+    
+
+    <% if flash[:notice] %>
+     <p id="notice">
+       <%= flash[:notice] %>
+     </p>
+   <% end %>
     <table class="table table-danger table-striped">
       <thead>
         <tr>
@@ -36,7 +44,7 @@
     </table>
   </div>
   <div class="row">
-    <h3 class="col-md-8"><%= link_to "買い物を続ける", items_path, class: 'btn btn-primary' %></h3>
+    <h3 class="col-md-8"><%= link_to "買い物を続ける", root_path, class: 'btn btn-primary' %></h3>
     <h3 class="col-md-4">合計　：　<%= @sum %>円</h3>
   </div>
 
