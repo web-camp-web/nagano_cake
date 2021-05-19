@@ -24,15 +24,39 @@
 }
 
 .page-header {
-  font-size: 21px;
+  font-size: 22px;
   background-color: #EEE;
   disply: inline-block;
   padding: 0 2%;
   margin-left: 5%;
 }
 
-/*sign_up*/
-.leading {
-  margin-top: 1%;
+/*customer sign_up*/
+.sign-up-leading {
+  margin-top: 1.5%;
   margin-left: 10%;
+}
+
+/*customer sign_in*/
+.page-small-header {
+  font-size: 17px;
+  background-color: #EEE;
+  disply: inline-block;
+  padding: 0 2%;
+  margin-left: 7%;
+}
+
+.customer-sign-in-label {
+  margin-left: 13%;
+}
+
+.customer-sign-in-btn {
+  margin-top: 1%;
+  margin-left: 29.7%;
+  width: 135px;
+}
+
+.sign-in-leading {
+  margin-top: 1.5%;
+  margin-left: 19%;
 }
