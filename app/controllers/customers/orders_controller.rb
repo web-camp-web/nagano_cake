@@ -34,6 +34,12 @@ class Customers::OrdersController < ApplicationController
       @order.delivery_postcode = params[:order][:new_postcode]
       @order.delivery_address = params[:order][:new_address]
       @order.delivery_name = params[:order][:new_name]
+      delivery = Delivery.new
+      delivery.customer_id = current_customer.id
+      delivery.postcode = params[:order][:new_postcode]
+      delivery.address = params[:order][:new_address]
+      delivery.name = params[:order][:new_name]
+      delivery.save
     end
   end
 

@@ -124,7 +124,7 @@ describe '4.登録情報変更〜退会のテスト' do
       end
     end
 
-    describe 'カート画面〜注文情報入力画面のテスト' do
+    describe 'カート画面〜注文情報入力画面〜マイページのテスト' do
       before do
         visit item_path(item)
         select 3, from: 'cart_item[quantity]'
@@ -142,20 +142,22 @@ describe '4.登録情報変更〜退会のテスト' do
 
       end
 
-      it 'カート画面で「情報入力に進む」ボタンを押すと注文情報入力画面に遷移する' do
-        expect(current_path).to eq new_order_path
-      end
-
-      it '注文情報入力画面で、登録した住所が選択できるようになっている' do
-
-        def delivery_full_address
-          '〒' + delivery.postcode + ' ' + delivery.address + ' ' + delivery.name
+      context 'カート画面〜注文情報入力画面のテスト' do
+        it 'カート画面で「情報入力に進む」ボタンを押すと注文情報入力画面に遷移する' do
+          expect(current_path).to eq new_order_path
         end
 
-        expect(page).to have_select 'order[delivery_address_id]', options: [delivery_full_address]
+        it '注文情報入力画面で、登録した住所が選択できるようになっている' do
+
+          def delivery_full_address
+            '〒' + delivery.postcode + ' ' + delivery.address + ' ' + delivery.name
+          end
+
+          expect(page).to have_select 'order[delivery_address_id]', options: [delivery_full_address]
+        end
       end
 
-      context '注文情報入力後のテスト' do
+      context '注文情報入力〜確定画面のテスト' do
         before do
           check_payment_and_fill_in_new_address_and_click_button
         end
@@ -185,6 +187,30 @@ describe '4.登録情報変更〜退会のテスト' do
           expect(current_path).to eq orders_complete_path
         end
       end
+
+      context 'サンクスページ〜マイページのテスト' do
+        it 'サンクスページのヘッダーからトップ画面へのリンクを押すとトップ画面に遷移する' do
+          visit orders_complete_path
+          find('a[href="/"]').click
+          expect(current_path).to eq root_path
+        end
+
+        it 'トップ画面のヘッダーからマイページへのリンクを押すとマイページへ遷移する' do
+          visit root_path
+          click_link 'マイページ'
+          expect(current_path).to eq customer_path(customer)
+        end
+      end
+
+      context 'マイページ〜配送先一覧画面のテスト' do
+        it 'マイページで配送先一覧へのリンクを押すと配送先一覧画面へ遷移する' do
+          visit customer_path(customer)
+          find('a[href="/deliveries"]').click
+          expect(current_path).to eq deliveries_path
+        end
+
+      end
+
     end
   end
 end
