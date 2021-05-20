@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe '4.登録情報変更〜退会のテスト' do
+describe '4.顧客登録情報変更〜退会のテスト' do
   let!(:customer) { create(:customer) }
 
   before do
@@ -203,14 +203,69 @@ describe '4.登録情報変更〜退会のテスト' do
       end
 
       context 'マイページ〜配送先一覧画面のテスト' do
+        before do
+          check_payment_and_fill_in_new_address_and_click_button
+        end
+
         it 'マイページで配送先一覧へのリンクを押すと配送先一覧画面へ遷移する' do
           visit customer_path(customer)
           find('a[href="/deliveries"]').click
           expect(current_path).to eq deliveries_path
         end
 
+        it '配送先一覧画面に、注文時に新しく入力した住所が表示されている' do
+          visit deliveries_path
+          expect(page).to have_content '0000000'
+          expect(page).to have_content '東京都渋谷区代々木神園町0-0'
+          expect(page).to have_content '令和道子'
+        end
       end
 
+      context 'マイページ〜退会のテスト' do
+        it 'マイページで顧客情報編集画面へのリンクを押すと、顧客情報編集画面へ遷移する' do
+          visit customer_path(customer)
+          click_link '編集する'
+          expect(current_path).to eq edit_customer_path(customer)
+        end
+
+        it '顧客情報編集画面で退会ボタンを押すと、アラートが表示される' do
+          visit edit_customer_path(customer)
+          click_link '退会する'
+          expect(current_path).to eq destroy_confirm_path(customer)
+        end
+
+        it '退会確認画面で「退会する」ボタンを押すと、トップ画面に遷移する' do
+          visit destroy_confirm_path(customer)
+          click_link '退会する'
+          expect(current_path).to eq root_path
+        end
+      end
+
+      context '退会後の確認テスト' do
+        before do
+          visit destroy_confirm_path(customer)
+          click_link '退会する'
+        end
+
+        it '退会後のトップ画面で、ヘッダーが未ログイン状態になっている' do
+          expect(page).to have_link 'ログイン'
+          expect(page).to have_link 'About'
+          expect(page).to have_link '新規登録'
+        end
+
+        it '退会後のトップ画面で、ヘッダーの「ログイン」リンクを押すとログイン画面に遷移する' do
+          click_link 'ログイン'
+          expect(current_path).to eq new_customer_session_path
+        end
+
+        it '退会したアカウントでログインができなくなっている' do
+          visit new_customer_session_path
+          fill_in 'customer[email]', with: customer.email
+          fill_in 'customer[password]', with: customer.password
+          click_button 'ログイン'
+          expect(current_path).to eq new_customer_session_path
+        end
+      end
     end
   end
 end
