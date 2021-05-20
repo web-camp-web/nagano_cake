@@ -84,6 +84,7 @@ describe '4.登録情報変更〜退会のテスト' do
     let!(:genre) { create(:genre) }
     let!(:item) { create(:item) }
     let!(:cart_item) { create(:cart_item) }
+    let!(:delivery) { create(:delivery) }
 
     context 'トップ画面〜商品詳細画面のテスト' do
       before do
@@ -113,13 +114,76 @@ describe '4.登録情報変更〜退会のテスト' do
         expect(current_path).to eq cart_items_path
       end
 
-      it 'カート画面で、カートの中身が正しく表示されている' do
+      xit 'カート画面で、カートの中身が正しく表示されている' do
         tax_price = (item.price * 1.1).floor
         sub_price = tax_price * cart_item.quantity
         visit cart_items_path
         expect(page).to have_content item.name
         expect(page).to have_content tax_price
         expect(page).to have_content sub_price
+      end
+    end
+
+    describe 'カート画面〜注文情報入力画面のテスト' do
+      before do
+        visit item_path(item)
+        select 3, from: 'cart_item[quantity]'
+        click_button 'カートに入れる'
+        click_link '情報入力に進む'
+
+        def check_payment_and_fill_in_new_address_and_click_button
+          choose "order_payment_method_銀行振込"
+          choose 'order_delivery_address_新しい届け先'
+          fill_in 'order[new_postcode]', with: '0000000'
+          fill_in 'order[new_address]', with: '東京都渋谷区代々木神園町0-0'
+          fill_in 'order[new_name]', with: '令和道子'
+          click_button '確認画面へ進む'
+        end
+
+      end
+
+      it 'カート画面で「情報入力に進む」ボタンを押すと注文情報入力画面に遷移する' do
+        expect(current_path).to eq new_order_path
+      end
+
+      it '注文情報入力画面で、登録した住所が選択できるようになっている' do
+
+        def delivery_full_address
+          '〒' + delivery.postcode + ' ' + delivery.address + ' ' + delivery.name
+        end
+
+        expect(page).to have_select 'order[delivery_address_id]', options: [delivery_full_address]
+      end
+
+      context '注文情報入力後のテスト' do
+        before do
+          check_payment_and_fill_in_new_address_and_click_button
+        end
+
+        it '任意の支払い方法、新しい住所を入力し、購入ボタンを押すと確認画面に遷移する' do
+          expect(current_path).to eq orders_confirm_path
+        end
+
+        it '注文情報確認画面に選択した商品名と個数が表示されている' do
+          tax_price = (item.price * 1.1).floor
+          sub_price =  tax_price * 4
+          expect(page).to have_content item.name
+          expect(page).to have_content 4
+          expect(page).to have_content sub_price.to_s(:delimited)
+        end
+
+        it '注文情報確認画面に選択した支払い方法が表示されている' do
+          expect(page).to have_content '銀行振込'
+        end
+
+        it '注文情報確認画面に、新しく入力した住所が表示されている' do
+          expect(page).to have_content '〒0000000 東京都渋谷区代々木神園町0-0 令和道子'
+        end
+
+        it '注文情報確認画面で、「注文を確定する」を押すとサンクスページに遷移する' do
+          click_button '注文を確定する'
+          expect(current_path).to eq orders_complete_path
+        end
       end
     end
   end
