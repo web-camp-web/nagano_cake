@@ -1,6 +1,7 @@
 <header>
   <nav>
     <ul class="nav navbar-nav navbar-right">
+      <%= link_to 'LOGO(仮)', root_path %>
       <% if customer_signed_in? %>
         <li>
           ようこそ、<%= current_customer.last_name %>さん！
@@ -22,7 +23,7 @@
           <%= link_to "商品一覧",admin_items_path %>
         </li>
         <li>
-          <%= link_to "会員一覧", admin_customers_path %>
+          <%= link_to "顧客一覧", admin_customers_path %>
         </li>
         <li>
           <%= link_to "注文履歴一覧", admin_orders_path %>
