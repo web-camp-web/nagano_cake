@@ -19,9 +19,9 @@
       <div class="top-box text-center itme">
         <strong class="col-3">
           <%= link_to item_path(item.id) do %>
-            <%= attachment_image_tag item, :image, :fill, 250, 250 %><br>
-            <%= item.name%><br>
+            <%= attachment_image_tag item, :image, :fill, 250, 250, alt: "item-image" %><br>
           <% end %>
+          <%= item.name %><br>
           <%= item.price %>円
         </strong>
       </div>
