@@ -114,13 +114,14 @@ describe '4.顧客登録情報変更〜退会のテスト' do
         expect(current_path).to eq cart_items_path
       end
 
-      xit 'カート画面で、カートの中身が正しく表示されている' do
+      it 'カート画面で、カートの中身が正しく表示されている' do
         tax_price = (item.price * 1.1).floor
         sub_price = tax_price * cart_item.quantity
         visit cart_items_path
         expect(page).to have_content item.name
         expect(page).to have_content tax_price
         expect(page).to have_content sub_price
+        expect(page).to have_selector 'input[value=4]'
       end
     end
 
@@ -266,6 +267,83 @@ describe '4.顧客登録情報変更〜退会のテスト' do
           expect(current_path).to eq new_customer_session_path
         end
       end
+    end
+  end
+end
+
+describe '4.管理者ログイン〜ログアウトのテスト' do
+  let!(:customer) { create(:customer) }
+  let!(:admin) { create(:admin) }
+
+  def admin_log_in
+    visit new_admin_session_path
+    fill_in 'admin[email]', with: admin.email
+    fill_in 'admin[password]', with: admin.password
+    click_button 'ログイン'
+  end
+
+  def customer_log_in
+    visit new_customer_session_path
+    fill_in 'customer[email]', with: customer.email
+    fill_in 'customer[password]', with: customer.password
+    click_button 'ログイン'
+  end
+
+  context 'ログイン画面〜顧客詳細画面のテスト' do
+    before do
+      customer_log_in
+      visit destroy_confirm_path(customer)
+      click_link '退会する'
+      admin_log_in
+    end
+
+    it '管理者ログイン画面で、メールアドレスとパスワードでログインすると管理者トップ画面(顧客注文履歴一覧画面)に遷移する' do
+      expect(current_path).to eq admin_orders_path
+    end
+
+    it '管理者トップ画面(顧客注文履歴一覧画面)で、顧客一覧へのリンクを押すと顧客一覧画面に遷移する' do
+      click_link '顧客一覧'
+      expect(current_path).to eq admin_customers_path
+    end
+
+    it '顧客一覧画面で退会ユーザが「退会」表示になっている' do
+      visit admin_customers_path
+      expect(page).to have_content customer.id
+      expect(page).to have_content (customer.last_name + customer.first_name)
+      expect(page).to have_content customer.email
+      expect(page).to have_content '退会'
+      expect(customer.reload.is_valid).to be false
+    end
+
+    it '顧客一覧画面で顧客の名前を押すと、該当の顧客詳細画面に遷移する' do
+      visit admin_customers_path
+      click_link (customer.last_name + customer.first_name)
+      expect(current_path).to eq admin_customer_path(customer)
+    end
+  end
+
+  context '顧客詳細画面〜ログアウトのテスト' do
+    before do
+      customer_log_in
+      visit customer_path(customer)
+      click_link '編集する'
+      fill_in 'customer[address]', with: '大阪府大阪市北区0000'
+      click_button '編集内容を保存'
+
+      admin_log_in
+      visit admin_customer_path(customer)
+    end
+
+    it '顧客詳細画面で、顧客が変更した住所が表示されている' do
+      expect(page).to have_content '大阪府大阪市北区0000'
+    end
+
+    it 'ヘッダーのログアウトリンクを押すと、管理者ログイン画面に遷移する' do
+      #顧客ログアウト
+      click_link 'ログアウト'
+      #管理者ログアウト
+      click_link 'ログアウト'
+      expect(current_path).to eq new_admin_session_path
     end
   end
 end
