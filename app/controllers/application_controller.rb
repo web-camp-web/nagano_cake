@@ -11,11 +11,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def after_sign_out_path_for(resource)
-    case resource
-    when Admin
+  def after_sign_out_path_for(resource_or_scope)
+    if resource_or_scope == :admin
       new_admin_session_path
-    when Customer
+    else
       root_path
     end
   end
