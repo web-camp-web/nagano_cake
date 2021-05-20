@@ -77,7 +77,6 @@ describe '登録〜注文のテスト' do
         expect(page).to have_content (item_1.price * 1.1).floor
         expect(page).to have_content item_1.genre_id
         expect(item_1.is_active).to be true
-        #expect(page).to have_selector("img[src$='item_1.jpg']")
       end
     end
 
@@ -180,7 +179,6 @@ describe '登録〜注文のテスト' do
       let!(:genre) { create(:genre) }
       let!(:item) { create(:item) }
       let!(:cart_item) { create(:cart_item) }
-
 
       before do
         visit new_order_path
