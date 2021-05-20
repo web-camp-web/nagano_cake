@@ -70,7 +70,7 @@ describe '登録〜注文のテスト' do
         expect(current_path).to eq item_path(1)
       end
 
-      it '押下した商品の商品情報が正しく表示されているか' do
+      it '押下した商品の商品情報が正しく表示されている' do
         visit item_path(1)
         expect(page).to have_content item_1.name
         expect(page).to have_content item_1.caption
@@ -95,7 +95,7 @@ describe '登録〜注文のテスト' do
         expect(current_path).to eq cart_items_path
       end
 
-      it 'カートの中身が正しく表示されているか' do
+      it 'カートの中身が正しく表示されている' do
         visit cart_items_path
         expect(page).to have_content item.name
         expect(page).to have_content (item.price * 1.1).floor
@@ -119,7 +119,7 @@ describe '登録〜注文のテスト' do
         (item_2.price * 1.1).floor
       end
 
-      it '既にカートの中身が入っている状況で商品を追加して正しく中身が表示されるか' do
+      it '既にカートの中身が入っている状況で、商品を追加した際、正しく中身が表示されている' do
         visit item_path(2)
         find("option[value='3']").select_option
         click_on 'カートに入れる'
@@ -153,6 +153,54 @@ describe '登録〜注文のテスト' do
       it '情報入力に進むボタンを押下すると情報入力画面に遷移する' do
         click_on '情報入力に進む'
         expect(current_path).to eq  new_order_path
+      end
+    end
+
+    context '注文情報入力画面のテスト' do
+       let!(:genre) { create(:genre) }
+       let!(:item) { create(:item) }
+       let!(:cart_item) { create(:cart_item) }
+
+       before do
+         visit new_order_path
+       end
+
+      it '支払い方法を選択し、住所をテキストに入力し、確認画面へ進むボタンを押下すると注文確認画面に遷移する' do
+        choose 'order_payment_method_銀行振込'
+        choose 'order_delivery_address_新しい届け先'
+        fill_in 'order[new_postcode]', with: '555555'
+        fill_in 'order[new_address]', with: '大阪府大阪市'
+        fill_in 'order[new_name]', with: '吉村知事'
+        click_on '確認画面へ進む'
+        expect(current_path).to eq orders_confirm_path
+      end
+    end
+
+    context '注文確認画面のテスト' do
+      let!(:genre) { create(:genre) }
+      let!(:item) { create(:item) }
+      let!(:cart_item) { create(:cart_item) }
+
+
+      before do
+        visit new_order_path
+        choose 'order_payment_method_銀行振込'
+        choose 'order_delivery_address_新しい届け先'
+        fill_in 'order[new_postcode]', with: '555555'
+        fill_in 'order[new_address]', with: '大阪府大阪市'
+        fill_in 'order[new_name]', with: '吉村知事'
+        click_on '確認画面へ進む'
+      end
+
+      it '選択した商品、合計金額、配送方法などが表示されている' do
+        expect(page).to have_content item.name
+        expect(page).to have_content ((item.price * 1.1).floor * cart_item.quantity + 800).to_s(:delimited)
+        expect(page).to have_content '銀行振込'
+      end
+
+      it '確定ボタンを押下するとサンクスページに遷移する' do
+        click_on '注文を確定する'
+        expect(current_path).to eq orders_complete_path
       end
     end
 
