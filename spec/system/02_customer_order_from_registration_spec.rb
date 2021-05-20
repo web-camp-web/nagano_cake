@@ -204,5 +204,59 @@ describe '登録〜注文のテスト' do
       end
     end
 
+    context 'サンクスページのテスト' do
+      it 'ヘッダーのマイページへのリンクを押下するとマイページに遷移する' do
+        visit orders_complete_path
+        click_on 'マイページ'
+        expect(current_path).to eq customer_path(1)
+      end
+    end
+
+    context 'マイページのテスト' do
+      it '注文履歴の一覧を見るのリンクを押下すると注文履歴一覧画面へ遷移する' do
+        visit customer_path(1)
+        find('a[href="/orders"]').click
+        expect(current_path).to eq orders_path
+      end
+    end
+
+    context '注文履歴一覧画面のテスト' do
+       let!(:genre) { create(:genre) }
+       let!(:item) { create(:item) }
+       let!(:cart_item) { create(:cart_item) }
+       let!(:order) { create(:order) }
+
+       before do
+         visit orders_path
+       end
+
+      it '注文した商品の詳細表示ボタンを押下すると注文詳細が表示される' do
+        click_on '表示する'
+        expect(current_path).to eq order_path(1)
+      end
+    end
+
+    context '注文詳細画面のテスト' do
+      let!(:genre) { create(:genre) }
+      let!(:item) { create(:item) }
+      let!(:cart_item) { create(:cart_item) }
+      let!(:order) { create(:order) }
+
+      before do
+        visit order_path(1)
+      end
+
+      it '注文内容が正しく表示されている' do
+        expect(page).to have_content order.delivery_address
+        expect(page).to have_content order.delivery_postcode
+        expect(page).to have_content order.total_price.to_s(:delimited)
+        expect(page).to have_content 'クレジットカード'
+      end
+
+      it 'ステータスが「入金待ち」になっている' do
+        expect(page).to have_content '入金待ち'
+      end
+
+    end
   end
 end

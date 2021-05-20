@@ -41,7 +41,7 @@
             </tr>
             <tr>
               <th class="table-active">ご請求金額</th>
-              <td><%= (@order.total_price + postage).to_s(:delimited) %>円</td>
+              <td><%= (@order.total_price).to_s(:delimited) %>円</td>
             </tr>
         </table>
     </div>
