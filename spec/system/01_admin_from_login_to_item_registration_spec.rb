@@ -100,7 +100,10 @@ describe '1.マスタ登録のテスト' do
     end
 
     it '登録した商品が表示されている' do
-      expect(page).to have_content item.name and item.price and item.genre and item.is_active
+      expect(page).to have_content item.name
+      expect(page).to have_content item.price
+      expect(page).to have_content item.genre.name
+      expect(page).to have_content "販売中"
     end
 
     it '「商品作成はこちら」というリンクを押すと商品新規登録画面が表示される' do
@@ -158,8 +161,14 @@ describe '1.マスタ登録のテスト' do
     end
 
     it '登録した商品が2つとも表示されている' do
-      expect(page).to have_content item_1.name and item_1.price and item_1.genre and item_1.is_active
-      expect(page).to have_content item_2.name and item_2.price and item_2.genre and item_2.is_active
+      expect(page).to have_content item_1.name
+      expect(page).to have_content item_1.price
+      expect(page).to have_content item_1.genre.name
+      expect(page).to have_content "販売中"
+      expect(page).to have_content item_2.name
+      expect(page).to have_content item_2.price
+      expect(page).to have_content item_2.genre.name
+      expect(page).to have_content "販売中"
     end
 
     it '「ログアウト」リンクを押すと管理者ログイン画面に遷移する' do
