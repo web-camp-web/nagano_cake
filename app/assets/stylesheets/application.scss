@@ -37,6 +37,11 @@ body {
   url(top/glass-1502835_1920.jpg);
   background-size: cover;
   font-family: "Sawarabi Mincho";
+  color: #f8f9fa;
+  // display: flex;
+  // flex-flow: column;
+  // min-height: 100vh;
+
 }
 
 .page-header {
@@ -212,18 +217,12 @@ body {
   padding: 0.3% 1.5%;
 }
 
-// .page-area {
-//   width: 100vw;
-//   height: 100vh;
-//   background-image: url(background_cake.png),
-//                     url(background_orange.jpeg);
-//   background-size: contain, cover;
-// }
-
-
-body {
-  color: #f8f9fa;
+.page-area {
+  padding-bottom: 20px;
 }
+
+
+
 
 .table {
   color: #f8f9fa;
@@ -246,36 +245,20 @@ body {
   }
 }
 
-.order-table {
-  margin-top: 35%;
-}
 
-.order-item-table {
-  margin-top: 20%;
-}
 
-.orders-table,
-.customer-order-area {
-  margin-top: 10%;
-}
+// a {
+//   color: #faff00;
+//   text-decoration: underline;
+// }
 
-a {
-  color: #faff00;
-  text-decoration: underline;
-}
 
-.order-form {
-  margin-top: 10%;
-
-  label,strong {
-    background-color: #ff8d00b3
-  }
 
   select,
   .new_address_form {
     width: 70%;
   }
-}
+
 
 /* header */
 
@@ -322,9 +305,16 @@ header {
   }
 }
 
+// .aaaaa{
+//   position: relative;
+//   min-height
+// }
+
 footer {
   width: 100%;
   padding: 20px;
   background-color: black;
   text-align: center;
+  // position: absolute;/*←絶対位置*/
+  // bottom: 0; /*下に固定*/
 }
