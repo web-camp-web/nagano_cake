@@ -1,8 +1,10 @@
 #  ECサイト「長野ケーキ」
 
 DMMWEBCAMPのチーム開発課題で作成しました。  
-20代後半〜40代の大人の女性をターゲットとし、
+20代後半〜40代の大人の女性をターゲットとし、  
 高級感のあるデザインとなっています。
+
+<img width="1296" alt="top-screen" src="https://user-images.githubusercontent.com/78312000/119145425-96008d00-ba84-11eb-91fc-5e0ef8a847ed.png">
 
 # アプリケーション設計
 ## テーブル定義書
