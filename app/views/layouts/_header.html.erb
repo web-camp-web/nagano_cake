@@ -3,7 +3,7 @@
     <%= link_to " NaganoCAKE", root_path, class: "fas fa-mug-hot navbar-brand" %>
     <ul class="nav navbar-nav ml-auto ">
       <% if customer_signed_in? %>
-        <li>
+        <li class="nav-welcome">
           ようこそ、<%= current_customer.last_name %>さん！
         </li>
         <li>

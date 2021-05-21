@@ -246,18 +246,26 @@ a {
 
 header {
   width: 100%;
-  padding: 10px 25px 20px 20px;
-  background: url(orange_000.jpeg);
-  background-size: cover;
-  font-family: "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro" ;
+  padding: 10px 20px 20px;
+  background-color: black;
   a {
     text-decoration: none;
+    color: white;
+  }
+  a:hover {
+    text-decoration: none;
+    color: white;
   }
 }
+
+.nav-welcome {
+  color: white;
+  margin-right: 50px;
+}
+
 .nav-right {
   border: solid 1px;
   border-radius: 5px;
   padding: 10px;
   margin: 30px;
-  color: black;
 }
