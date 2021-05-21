@@ -2,22 +2,49 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.image-text {
-  position: absolute;
-  margin: 3% 0 0 10%;
-  // opacity: 0.9;
-  font-size: 18px;
+.top-title {
+font-family: 'Homemade Apple', cursive;
+padding-left: 100px;
+margin: 15px 0;
+color: #DAA520;
+display: none;
+font-size: 500px;
+// display: flex;
+// justify-content: center;
+}
+.top-comment {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  color: white;
+  font-family: "Sawarabi Mincho";
+  text-align: center;
+  display: none;
 }
 
-.top-main {
+// .image-text {
+//   position: absolute;
+//   margin: 3% 0 0 10%;
+//   // opacity: 0.9;
+//   font-size: 18px;
+// }
+
+.main-container {
+  font-family: 'Homemade Apple', cursive;
+  margin-top: 60px;
+}
+.main-title {
+  padding-left: 100px;
+}
+.main-box {
   height: 450px;
 }
-.top-box{
+.item-box{
   width: 25%;
   height: 150px;
   margin-top: 20px;
+
 }
-.top-box > strong{
+.item-box > strong{
   padding: 10px;
 }

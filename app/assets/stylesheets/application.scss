@@ -16,7 +16,9 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
-
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Corben:700');
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho');
 * {
   margin: 0;
   padding: 0;
@@ -32,21 +34,47 @@
 
 /*customer top*/
 .top-container{
-  background-color: #F5F5F5;
   height: 100%;
-  padding-top: 15px;
-  background-image: url('underwater-4286600_1920.jpg');
-  background-size: 100% 100%;
+  padding: 15px 0;
+  background: linear-gradient(-135deg, #990000, #222222);
+  padding-bottom: 50px;
+  //  background-image: url('underwater-4286600_1920.jpg');
+  // background-image: url('georgia-de-lotz-1n_HNfGVBxE-unsplash.jpg');
+  // background-size: 100% 100%;
 }
 
-.top-image{
-  background-image: url('ballerina-3055155_1920.jpg');
-  background-size: 100% 100%;
-  width: 100%;
-  height: 570px;
-  position: relative;
-  opacity: 0.6;
+.slide-box {
+  display: none;
 }
+
+.image1 {
+  background-image: url('top/tina-guina-s8_7AqkzCWY-unsplash.jpg');
+}
+.image2 {
+  background-image: url('top/brownie-548591_1920.jpg');
+}
+.image3 {
+  background-image: url('top/massimo-adami-YtLmmY2ok-4-unsplash.jpg');
+}
+.image4 {
+  background-image: url('top/coffee-4078471_1920.jpg');
+}
+.image5 {
+  background-image: url('top/praline-2966091_1920.jpg');
+}
+
+.image_box {
+  height: 500px;
+}
+
+// .top-image{
+//   background-image: url('ballerina-3055155_1920.jpg');
+//   background-size: 100% 100%;
+//   width: 100%;
+//   height: 570px;
+//   position: relative;
+//   opacity: 0.6;
+// }
 
 /*customer sign_up*/
 .sign-up-header {
