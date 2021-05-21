@@ -228,3 +228,17 @@ a {
   color: #faff00;
   text-decoration: underline;
 }
+
+.order-form {
+  margin-top: 10%;
+
+  label,strong {
+    background-color: #ff8d00b3
+  }
+
+  select,
+  .new_address_form {
+    width: 70%;
+  }
+}
+
