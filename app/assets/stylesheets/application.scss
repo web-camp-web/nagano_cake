@@ -185,10 +185,11 @@
 .page-area {
   width: 100vw;
   height: 100vh;
-  background-image: url(background_orange.jpeg);
-  background-position: 50% 35%;
-  background-size: cover;
+  background-image: url(background_cake.png),
+                    url(background_orange.jpeg);
+  background-size: contain, cover;
 }
+
 
 body {
   color: #f8f9fa;
@@ -212,11 +213,18 @@ body {
 }
 
 .order-table {
+  margin-top: 35%;
+}
+
+.order-item-table {
+  margin-top: 20%;
+}
+
+.orders-table {
   margin-top: 10%;
 }
 
-.under-area {
-  height: 100px;
-  background-image: url(cock-hat.png);
-  background-size: contain;
+a {
+  color: #faff00;
+  text-decoration: underline;
 }
