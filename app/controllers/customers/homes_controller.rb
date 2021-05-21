@@ -1,6 +1,6 @@
 class Customers::HomesController < ApplicationController
   def top
-    @items = Item.all.limit(4)
+    @items = Item.all.order(updated_at: :desc).limit(4)
   end
 
   def about
