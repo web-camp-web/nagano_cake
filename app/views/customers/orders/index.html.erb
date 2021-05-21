@@ -1,10 +1,12 @@
 <div class="container">
+  <div class="row">
+    <h2 class="page-header">注文履歴一覧</h2>
+  </div>
   <div calss="row">
-    <div>
-      <h2 class="page-header">注文履歴一覧</h2>
+    <div class="col-12">
         <% if @orders.present? %>
-          <table class="table table-hover table-bordered">
-            <thead class="thead-light">
+          <table class="table table-hover table-borderless orders-table">
+            <thead>
               <tr>
                 <th>注文日</th>
                 <th>配送先</th>

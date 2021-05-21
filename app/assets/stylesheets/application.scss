@@ -200,12 +200,16 @@ body {
   background-color: #ff4b0785;
   text-align: center;
 
-  thead {
+  thead,th {
     background-color: #ff8d00b3;
   }
 
+  th,td {
+    vertical-align: middle;
+  }
+
   tr:hover {
-    td,th {
+    td {
       background-color: #ff4b07d1;
       color: #f8f9fa;
     }
@@ -220,7 +224,8 @@ body {
   margin-top: 20%;
 }
 
-.orders-table {
+.orders-table,
+.customer-order-area {
   margin-top: 10%;
 }
 
