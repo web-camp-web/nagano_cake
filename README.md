@@ -1,24 +1,15 @@
-# README
+#  ECサイト「長野ケーキ」
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+DMMWEBCAMPのチーム開発課題で作成しました。
+20代後半〜40代の大人の女性をターゲットとし、
+高級感のあるデザインとなっています。
 
-Things you may want to cover:
+# アプリケーション設計
+## ER図
+![image](https://user-images.githubusercontent.com/78312000/119122111-229d5200-ba69-11eb-8722-119ac1c7e103.png)
 
-* Ruby version
+## アプリケーション詳細設計図
 
-* System dependencies
+<img width="567" alt="admin" src="https://user-images.githubusercontent.com/78312000/119119428-254a7800-ba66-11eb-938e-21dad4855472.png">
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<img width="610" alt="customer" src="https://user-images.githubusercontent.com/78312000/119121828-d7833f00-ba68-11eb-93c9-a7b4925e9281.png">
