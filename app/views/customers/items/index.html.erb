@@ -1,17 +1,21 @@
+<div>
+<h2 class="page-header">商品一覧 <%= @items.count %>件</h2>
 <div class="container item-main">
   <div>
-    <h2 class="page-header">商品一覧 <%= @items.count %>件</h2>
+    <div class="row text-center">
     <% @items.each do |item| %>
-      <%# if item.is_active == true %>
-      <div>
-        <p><%= attachment_image_tag item, :image %></p>
-        <p><%= link_to item.name, item_path(item.id) %></p>
-        <p><%= item.price %></p>
+
+      <div class="item-box">
+        <%= attachment_image_tag item, :image, :fill, 200, 200 %><br>
+        <%= link_to item.name, item_path(item.id) %><br>
+        <%= item.price %>
       </div>
-      <%# end %>
+
     <% end %>
+    </div>
   </div>
   <div class="row offset-5">
   <%= paginate @items %>
   </div>
+</div>
 </div>

@@ -2,39 +2,39 @@
 
 <h2 class="page-header">商品詳細ページ</h2>
   <div class="row">
-    <div class="col-md-3">
-    　<%= attachment_image_tag @item, :image %>
+    <div>
+    　<%= attachment_image_tag @item, :image, :fill, 550, 400 %>
     </div>
-    <div class="col-md-8 offset-md-1">
+    <div class="item-caption">
       <table class="table">
         <div class="row">
-          <p class="col">商品名</p>
-          <p class="col"><%= @item.name %></p>
+          <p class="item">商品名</p>
+          <p class="item-li"><%= @item.name %></p>
         </div>
 
         <div class="row">
-          <p class="col">商品説明</p>
-          <p class="col"><%= @item.caption %></p>
+          <p class="item">商品説明</p>
+          <p class="item-li"><%= @item.caption %></p>
         </div>
 
         <div class="row">
-          <p class="col">ジャンル</p>
-          <p class="col"><%= @item.genre.name %></p>
+          <p class="item">ジャンル</p>
+          <p class="item-li"><%= @item.genre.name %></p>
         </div>
 
         <div class="row">
-          <p class="col">税込価格(税抜価格)</p>
-          <p class="col"><%= (@item.price * 1.1).to_i %>(<%= @item.price %>)円</p>
+          <p class="item">税込価格<br>(税抜価格)</p>
+          <p class="item-li"><%= (@item.price * 1.1).to_i %>(<%= @item.price %>)円</p>
         </div>
 
 
         <div class="row">
           <% if @item.is_active %>
-            <p class="col">販売ステータス</p>
-            <p class="col">販売中</p>
+            <p class="item">販売ステータス</p>
+            <p class="item-li">販売中</p>
           <% else %>
-            <p class="col">販売ステータス</p>
-            <p class="col">販売停止</p>
+            <p class="item">販売ステータス</p>
+            <p class="item-li">販売停止</p>
           <% end %>
         </div>
         <%= link_to "編集する", edit_admin_item_path(@item), class: 'btn btn-success' %>

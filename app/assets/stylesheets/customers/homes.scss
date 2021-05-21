@@ -7,34 +7,25 @@ font-family: 'Homemade Apple', cursive;
 padding-left: 100px;
 margin: 15px 0;
 color: #DAA520;
-display: none;
 font-size: 500px;
-// display: flex;
-// justify-content: center;
 }
+
 .top-comment {
   display: flex;
   justify-content: center;
   margin-top: 40px;
   color: white;
-  font-family: "Sawarabi Mincho";
   text-align: center;
-  display: none;
 }
-
-// .image-text {
-//   position: absolute;
-//   margin: 3% 0 0 10%;
-//   // opacity: 0.9;
-//   font-size: 18px;
-// }
 
 .main-container {
   font-family: 'Homemade Apple', cursive;
-  margin-top: 60px;
+  padding: 60px 0;
+  background-color: #EEEEEE;
 }
 .main-title {
   padding-left: 100px;
+  color: rgba(128, 0, 0, 1);
 }
 .main-box {
   height: 450px;
@@ -42,9 +33,26 @@ font-size: 500px;
 .item-box{
   width: 25%;
   height: 150px;
-  margin-top: 20px;
-
+  border-radius: 50% 50% 50% 70%/50% 50% 70% 60%;
+  // margin-top: 10px;
 }
 .item-box > strong{
   padding: 10px;
+  color: black;
+}
+
+.image-link{
+  border: 1px solid #ddd;
+  width: 300px;
+  height: 226px;
+  margin: 20px auto 0;
+  transition-duration: 0.5s;
+  width: 88%;
+  cursor: pointer;
+}
+
+.image-link:hover{
+  box-shadow: 20px 20px 20px rgba(0,0,0,0.5);
+  transform: translateY(-10px);
+  transition-duration: 0.5s;
 }
