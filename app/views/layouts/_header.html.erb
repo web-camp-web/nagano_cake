@@ -1,51 +1,51 @@
 <header>
-  <nav>
-    <ul class="nav navbar-nav navbar-right">
-      <%= link_to "NaganoCAKE", root_path, class: "fas fa-mug-hot" %>
+  <nav class="navbar navbar-expand-lg">
+    <%= link_to " NaganoCAKE", root_path, class: "fas fa-mug-hot navbar-brand" %>
+    <ul class="nav navbar-nav ml-auto ">
       <% if customer_signed_in? %>
         <li>
           ようこそ、<%= current_customer.last_name %>さん！
         </li>
         <li>
-          <%= link_to "マイページ", customer_path(current_customer) %>
+          <%= link_to "マイページ", customer_path(current_customer), class: " nav-right"%>
         </li>
         <li>
-          <%= link_to "商品一覧", items_path %>
+          <%= link_to "商品一覧", items_path, class: "nav-right" %>
         </li>
         <li>
-          <%= link_to "カート", cart_items_path %>
+          <%= link_to "カート", cart_items_path, class: "nav-right" %>
         </li>
         <li>
-          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-right" %>
         </li>
       <% elsif admin_signed_in? %>
         <li>
-          <%= link_to "商品一覧",admin_items_path %>
+          <%= link_to "商品一覧",admin_items_path, class: "nav-right" %>
         </li>
         <li>
-          <%= link_to "顧客一覧", admin_customers_path %>
+          <%= link_to "顧客一覧", admin_customers_path, class: "nav-right" %>
         </li>
         <li>
-          <%= link_to "注文履歴一覧", admin_orders_path %>
+          <%= link_to "注文履歴一覧", admin_orders_path, class: "nav-right" %>
         </li>
         <li>
-          <%= link_to "ジャンル一覧", admin_genres_path %>
+          <%= link_to "ジャンル一覧", admin_genres_path, class: "nav-right" %>
         </li>
         <li>
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-right" %>
         </li>
       <% else %>
         <li>
-          <%= link_to "About", about_path%>
+          <%= link_to "About", about_path, class: "nav-right" %>
         </li>
         <li>
-          <%= link_to "商品一覧", items_path%>
+          <%= link_to "商品一覧", items_path, class: "nav-right" %>
         </li>
         <li>
-          <%= link_to "新規登録", new_customer_registration_path%>
+          <%= link_to "新規登録", new_customer_registration_path, class: "nav-right" %>
         </li>
         <li>
-          <%= link_to "ログイン", new_customer_session_path%>
+          <%= link_to "ログイン", new_customer_session_path, class: "nav-right" %>
         </li>
       <% end %>
     </ul>
