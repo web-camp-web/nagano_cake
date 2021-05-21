@@ -1,38 +1,41 @@
 <div class="container">
-  <h2 class="page-header">注文情報確認</h2>
+  <div class="row">
+    <h2 class="page-header">注文情報確認</h2>
+  </div>
   <div calss="row">
-    <div class="col-9">
-      <table class="table table-hover table-bordered">
-        <thead class="thead-light">
+    <table class="table table-hover table-bordered order-item-table">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |cart_item| %>
           <tr>
-            <th>商品名</th>
-            <th>単価(税込)</th>
-            <th>数量</th>
-            <th>小計</th>
+            <td>
+              <%= attachment_image_tag( cart_item(cart_item.id).image_id, :image, size: "60x50", fallback: "no_image.jpg") %>
+              <%= cart_item.item.name %>
+            </td>
+            <td>
+              <%= tax_price(cart_item.item_id).to_s(:delimited) %>
+            </td>
+            <td>
+                <%= cart_item.quantity %>
+            </td>
+            <td>
+              <%= sub_price(cart_item.id).to_s(:delimited) %>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          <% @cart_items.each do |cart_item| %>
-            <tr>
-              <td>
-                <!--%= attachment_image_tag( cart_item(cart_item.id).image_id, :image, size: "60x50", fallback: "no_image.jpg") %-->
-                <%= cart_item.item.name %>
-              </td>
-              <td>
-                <%= tax_price(cart_item.item_id).to_s(:delimited) %>
-              </td>
-              <td>
-                  <%= cart_item.quantity %>
-              </td>
-              <td>
-                <%= sub_price(cart_item.id).to_s(:delimited) %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-3">
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
       <table class="table table-hover table-bordered">
           <tr>
             <th class="table-active">送料</th>
@@ -48,9 +51,8 @@
           </tr>
       </table>
     </div>
-  </div>
-  <div class="row">
-    <div>
+
+    <div class="col-6">
       <table class="table table-borderless">
         <tr>
           <th>支払方法</th>
@@ -65,19 +67,23 @@
           </td>
         </tr>
       </table>
+    </div>
+  </div>
 
-      <div>
-      <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
-        <%= f.hidden_field :customer_id, :value => current_customer.id %>
-        <%= f.hidden_field :delivery_postcode %>
-        <%= f.hidden_field :delivery_address %>
-        <%= f.hidden_field :delivery_name %>
-        <%= f.hidden_field :payment_method %>
-        <%= f.hidden_field :total_price, :value => billing(current_customer.id) %>
-        <%= f.hidden_field :postage, :value => postage %>
-        <%= f.submit "注文を確定する", class: "btn btn-success" %>
-      <% end %>
+  <div class="row">
+    <div class="col-12">
+    <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+      <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <%= f.hidden_field :delivery_postcode %>
+      <%= f.hidden_field :delivery_address %>
+      <%= f.hidden_field :delivery_name %>
+      <%= f.hidden_field :payment_method %>
+      <%= f.hidden_field :total_price, :value => billing(current_customer.id) %>
+      <%= f.hidden_field :postage, :value => postage %>
+      <div class="order-submit-btn">
+      <%= f.submit "注文を確定する", class: "btn btn-success" %>
       </div>
-</div>
-</div>
+    <% end %>
+    </div>
+  </div>
 </div>

@@ -2,14 +2,12 @@
   <div class="row">
     <h2 class="page-header">注文履歴詳細</h2>
   </div>
-
   <div class="row">
-    <div>
-      <table class="table table-borderless">
+    <div class="col-lg-4 col-md-0 col-sm-0">
+      <table class="table table-borderless order-table">
         <tr>
          <th>購入者</th>
          <td>
-           <!-- cssでリンクの文字色を黒、下線ありに変更予定 -->
            <%= link_to admin_customer_path(@order.customer) do %>
              <%= customer_full_name(@order.customer.id) %>
            <% end %>
@@ -41,12 +39,9 @@
         </tr>
       </table>
     </div>
-  </div>
-
-  <div class="row">
     <div class="col-lg-8 col-md-12 col-sm-12">
-      <table class="table table-borderless">
-        <thead class="thead-light">
+      <table class="table table-borderless order-item-table">
+        <thead>
           <tr>
             <th>商品名</th>
             <th>単価（税込）</th>
@@ -76,20 +71,27 @@
         </tbody>
       </table>
     </div>
-    <div class="col-lg-4 col-md-0 col-sm-0">
-        <div>
-          <strong>商品合計</strong>
-          <p><%= (@order.total_price - postage) %>円</p>
-        </div>
-        <div>
-          <strong>送料</strong>
-          <p><%= postage %>円</p>
-        </div>
-        <div>
-          <strong>請求金額合計</strong>
-          <strong><%= @order.total_price %>円</strong>
-        </div>
-      </div>
   </div>
 
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <table class="table table-borderless">
+        <tr>
+          <th>商品合計</th>
+          <td><%= (@order.total_price - postage) %>円</td>
+        </tr>
+        <tr>
+          <th>送料</th>
+          <td><%= postage %>円</td>
+        </tr>
+        <tr>
+          <th>請求金額合計</th>
+          <td><%= @order.total_price %>円</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-4"></div>
+  </div>
+  <div class="row under-area"></div>
 </div>

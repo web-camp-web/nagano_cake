@@ -27,7 +27,7 @@
 
 .page-header {
   font-size: 22px;
-  background-color: #EEE;
+  background-color: #ff8d00b3;
   disply: inline-block;
   padding: 0 2%;
 }
@@ -208,4 +208,80 @@
 
 .delivery-edit-btn {
   padding: 0.3% 1.5%;
+}
+
+.page-area {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(background_cake.png),
+                    url(background_orange.jpeg);
+  background-size: contain, cover;
+}
+
+
+body {
+  color: #f8f9fa;
+}
+
+.table {
+  color: #f8f9fa;
+  background-color: #ff4b0785;
+  text-align: center;
+
+  thead,th {
+    background-color: #ff8d00b3;
+  }
+
+  th,td {
+    vertical-align: middle;
+  }
+
+  tr:hover {
+    td {
+      background-color: #ff4b07d1;
+      color: #f8f9fa;
+    }
+  }
+}
+
+.order-table {
+  margin-top: 35%;
+}
+
+.order-item-table {
+  margin-top: 20%;
+}
+
+.orders-table,
+.customer-order-area {
+  margin-top: 10%;
+}
+
+a {
+  color: #faff00;
+  text-decoration: underline;
+}
+
+.order-form {
+  margin-top: 10%;
+
+  label,strong {
+    background-color: #ff8d00b3
+  }
+
+  select,
+  .new_address_form {
+    width: 70%;
+  }
+}
+
+.order-submit-btn {
+  text-align: center;
+}
+
+.thanks-page {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
