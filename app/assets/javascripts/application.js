@@ -19,17 +19,16 @@
 //= require_tree .
 
 $(function() {
-  $('.top-title').fadeIn(3000);
+  $('.top-title').hide().fadeIn(3000);
 });
 
 $(function() {
-  $('.slide-box').fadeIn(2500);
+  $('.slide-box').hide().fadeIn(2500);
 });
 
 $(function() {
-  $('.top-comment').fadeIn(7000);
+  $('.top-comment').hide().fadeIn(7000);
 });
-
 
 
 
@@ -57,6 +56,4 @@ $(document).ready(function () {
     hidePrevious : false
   });
 });
-
-
 

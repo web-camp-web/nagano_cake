@@ -36,17 +36,17 @@
       <h2>〜NEW〜</h2>
     </div>
   <div class="container">
-  <div class="main-box mt-5">
+  <div class="main-box">
     <div class="row">
       <% @items.each do |item| %>
 
       <div class="item-box text-center">
         <strong class="col-3">
-          <%= link_to item_path(item.id) do %>
-            <%= attachment_image_tag item, :image, :fill, 250, 250, alt: "item-image" %><br>
+          <div class="image-link"><%= link_to item_path(item.id) do %>
+            <%= attachment_image_tag item, :image, :fill, 250, 250, alt: "item-image" %></div>
           <% end %>
-          <%= item.name %><br>
-          <%= item.price %>円
+          <p class="pt-5"><%= item.name %></p>
+          <p><%= item.price %>円</p>
         </strong>
       </div>
 
