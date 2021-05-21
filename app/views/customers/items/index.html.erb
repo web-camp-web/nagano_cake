@@ -5,7 +5,7 @@
     <div class="row text-center">
     <% @items.each do |item| %>
 
-      <div class="item-box">
+      <div class="items-box">
         <%= attachment_image_tag item, :image, :fill, 200, 200 %><br>
         <%= link_to item.name, item_path(item.id) %><br>
         <%= item.price %>
