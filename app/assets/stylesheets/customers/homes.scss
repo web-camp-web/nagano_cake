@@ -4,10 +4,11 @@
 
 .top-title {
 font-family: 'Homemade Apple', cursive;
-padding-left: 100px;
 margin: 15px 0;
 color: #DAA520;
-font-size: 500px;
+display: flex;
+justify-content: center;
+// font-size: 500px;
 }
 
 .top-comment {
@@ -34,7 +35,6 @@ font-size: 500px;
   width: 25%;
   height: 150px;
   border-radius: 50% 50% 50% 70%/50% 50% 70% 60%;
-  // margin-top: 10px;
 }
 .item-box > strong{
   padding: 10px;

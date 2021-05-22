@@ -1,7 +1,7 @@
 class Customers::CartItemsController < ApplicationController
   before_action :authenticate_customer!
-  
-  
+
+
   def create
     # 下記の記述だとrender時にエラーが出る
     # @cart_item = current_customer.cart_items.new(cart_items_params)
@@ -15,41 +15,33 @@ class Customers::CartItemsController < ApplicationController
         flash[:notice] = "カートに追加しました！！"
         redirect_to cart_items_path
       else
-
         @item = Item.find_by(id: @cart_item.item_id)
         @total_price = (@cart_item.item.price * 1.1).to_i
-        @cart_item = CartItem.new
-
         render template: 'customers/items/show'
       end
     else
       # 商品名が同じ場合、数量を合計値にする
-      if @cart_item.quantity.to_i == 0
-        @item = Item.find_by(id: @cart_item.item_id)
-        @total_price = (@cart_item.item.price * 1.1).to_i
-        @cart_item = CartItem.new
-
-        render template: 'customers/items/show'
-      else
+      if @cart_item.save
         total_quantity = (@cart_item.quantity + cart_items_new.quantity).to_i
         cart_items_new.update(quantity: total_quantity)
         flash[:notice] = "カートに追加しました！！"
         @cart_item.destroy
         redirect_to cart_items_path
+      else
+        @item = Item.find_by(id: @cart_item.item_id)
+        @total_price = (@cart_item.item.price * 1.1).to_i
+        render template: 'customers/items/show'
       end
     end
   end
 
-
-
-
   def index
     @cart_items = current_customer.cart_items
-    @tax = 1.1
   end
 
   def update
-    CartItem.find(params[:id]).update(cart_items_params)
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(cart_items_params)
     flash[:notice] = "数量を変更しました！！"
     redirect_to cart_items_path
   end

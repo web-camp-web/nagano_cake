@@ -18,21 +18,28 @@
 //= require turbolinks
 //= require_tree .
 
-$(function() {
-  $('.top-title').hide().fadeIn(3000);
+// $(function() {
+//   $('.top-title').hide().fadeIn(3000);
+// });
+
+$(document).on('turbolinks:load', function(){
+  $('.top-title').hide().fadeIn(3300);
 });
 
-$(function() {
-  $('.slide-box').hide().fadeIn(2500);
+$(document).on('turbolinks:load', function(){
+  $('.slide-box').hide().fadeIn(4400);
 });
 
-$(function() {
+
+$(document).on('turbolinks:load', function(){
   $('.top-comment').hide().fadeIn(7000);
 });
 
 
 
-$(document).ready(function () {
+
+
+$(document).on('turbolinks:load', function () {
   $("#theTarget").skippr({
     // スライドショーの変化 ("fade" or "slide")
     transition : 'fade',

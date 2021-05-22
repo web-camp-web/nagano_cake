@@ -29,6 +29,7 @@
 
 header{
   background-color: #222222;
+  font-family: 'Homemade Apple', cursive;
 }
 
 body {
@@ -36,6 +37,13 @@ body {
   url(top/glass-1502835_1920.jpg);
   background-size: cover;
   font-family: "Sawarabi Mincho";
+  color: #f8f9fa;
+  // display: flex;
+  // flex-flow: column;
+  // min-height: 100vh;
+  // position: relative;
+  // box-sizing: border-box;
+  // height: 100%;
 }
 
 .page-header {
@@ -93,8 +101,7 @@ body {
 }
 
 .page-small-header {
-  font-size: 17px;
-  background-color: #EEE;
+  font-size: 24px;
   disply: inline-block;
   padding: 0 2%;
   margin-left: 7%;
@@ -212,17 +219,11 @@ body {
 }
 
 .page-area {
-  width: 100vw;
-  height: 100vh;
-  background-image: url(background_cake.png),
-                    url(background_orange.jpeg);
-  background-size: contain, cover;
+  padding-bottom: 20px;
 }
 
 
-body {
-  color: #f8f9fa;
-}
+
 
 .table {
   color: #f8f9fa;
@@ -245,36 +246,20 @@ body {
   }
 }
 
-.order-table {
-  margin-top: 35%;
-}
 
-.order-item-table {
-  margin-top: 20%;
-}
 
-.orders-table,
-.customer-order-area {
-  margin-top: 10%;
-}
+// a {
+//   color: #faff00;
+//   text-decoration: underline;
+// }
 
-a {
-  color: #faff00;
-  text-decoration: underline;
-}
 
-.order-form {
-  margin-top: 10%;
-
-  label,strong {
-    background-color: #ff8d00b3
-  }
 
   select,
   .new_address_form {
     width: 70%;
   }
-}
+
 
 .order-submit-btn {
   text-align: center;
@@ -292,8 +277,15 @@ a {
     width: 25%;
   }
 }
+body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 125vh;
+}
 
 footer {
+  margin-top: auto;
   width: 100%;
   padding: 20px;
   background-color: black;
