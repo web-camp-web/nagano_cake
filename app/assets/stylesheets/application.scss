@@ -261,34 +261,6 @@ body {
   }
 
 
-/* header */
-
-header {
-  width: 100%;
-  padding: 20px;
-  background-color: black;
-  a {
-    text-decoration: none;
-    color: white;
-  }
-  a:hover {
-    text-decoration: none;
-    color: white;
-  }
-}
-
-.nav-welcome {
-  color: white;
-  margin-right: 50px;
-}
-
-.nav-right {
-  border: solid 1px;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 30px;
-}
-
 .order-submit-btn {
   text-align: center;
 }
@@ -305,21 +277,6 @@ header {
     width: 25%;
   }
 }
-
-// .aaaaa{
-//   position: relative;
-//   min-height
-// }
-
-// footer {
-//   width: 100%;
-//   padding: 20px;
-//   background-color: black;
-//   text-align: center;
-//   // position: absolute;/*←絶対位置*/
-//   // bottom: 0; /*下に固定*/
-// }
-
 body,
 #wrapper {
   display: flex;
@@ -333,8 +290,4 @@ footer {
   padding: 20px;
   background-color: black;
   text-align: center;
-}
-
-.thead-light > tr {
-  background-color: red;
 }
