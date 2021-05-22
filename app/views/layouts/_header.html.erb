@@ -34,6 +34,7 @@
         <li>
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-right" %>
         </li>
+        <%= render "layouts/search" %>
       <% else %>
         <li>
           <%= link_to "About", about_path, class: "nav-right" %>
