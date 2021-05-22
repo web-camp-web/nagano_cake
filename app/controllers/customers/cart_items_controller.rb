@@ -35,9 +35,6 @@ class Customers::CartItemsController < ApplicationController
     end
   end
 
-
-
-
   def index
     @cart_items = current_customer.cart_items
   end
@@ -46,22 +43,13 @@ class Customers::CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_items_params)
     flash[:notice] = "数量を変更しました！！"
-    @cart_items = current_customer.cart_items
-
-    # @sum = 0
-    # @cart_items = current_customer.cart_items
-    # @cart_items.each do |cart_item|
-    #   @sum += cart_item.price * cart_item.quantity
-    # end
-
-    # redirect_to cart_items_path
+    redirect_to cart_items_path
   end
 
   def destroy
     CartItem.find(params[:id]).destroy
     flash[:notice] = "商品を削除しました！！"
-    @cart_items = current_customer.cart_items
-    # redirect_to cart_items_path
+    redirect_to cart_items_path
   end
 
   def all_destroy
