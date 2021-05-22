@@ -17,7 +17,7 @@ class Customer < ApplicationRecord
 
   def self.looks(word)
     return none if word.blank?
-    @customer = customer.where("name LIKE?", "%#{word}%")
+    @customer = Customer.where("last_name LIKE?", "%#{word}%")
   end
 
 

@@ -1,0 +1,67 @@
+
+<% if @range == "Item" %>
+  <h2>Items search for "<%= @word %>"</h2>
+  <table class="table table-striped">
+  <div class="row">
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜き価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+</div>
+  <tbody>
+    <div class="row">
+  <% @items.each do |item| %>
+    <tr>
+      <td><%= item.id %></td>
+      <td><%= link_to item.name, admin_item_path(item) %></td>
+      <td><%= item.price %></td>
+      <td><%= item.genre.name %></td>
+      <% if item.is_active %>
+        <td>販売中</td>
+      <% else %>
+        <td>販売停止中</td>
+      <% end %>
+    </tr>
+    <% end %>
+    </div>
+  </tbody>
+</table>
+<% else %>
+  <h2>Customers search for "<%= @word %>"</h2>
+  <table class="table table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td><%= customer.id %></td>
+              <td>
+                <%= link_to admin_customer_path(customer.id) do %>
+                  <%= customer_full_name(customer.id) %>
+                <% end %>
+              </td>
+              <td><%= customer.email %></td>
+              <td>
+                <% if customer.is_valid == true %>
+                  <p class="text-success">有効</p>
+                <% else %>
+                  <p class="text-muted">退会</p>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+<% end %>
