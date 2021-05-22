@@ -9,4 +9,9 @@ class Item < ApplicationRecord
 
   validates :name, :genre_id, :image, :caption, :price, :is_active, presence: true
 
+  def self.looks(word)
+    return none if word.blank?
+    @item = Item.where("name LIKE?", "%#{word}%")
+  end
+
 end

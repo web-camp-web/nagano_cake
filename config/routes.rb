@@ -18,6 +18,7 @@ devise_for :admins, controllers: {
     resources :order_items, only: [:update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
+    
   end
 
   scope module: :customers do
@@ -37,6 +38,6 @@ devise_for :admins, controllers: {
     get 'about' => 'homes#about'
  end
 
-
+get "search" => "searches#search"
 
 end
