@@ -1,7 +1,7 @@
 class Customers::CartItemsController < ApplicationController
   before_action :authenticate_customer!
-  
-  
+
+
   def create
     # 下記の記述だとrender時にエラーが出る
     # @cart_item = current_customer.cart_items.new(cart_items_params)
@@ -18,7 +18,7 @@ class Customers::CartItemsController < ApplicationController
 
         @item = Item.find_by(id: @cart_item.item_id)
         @total_price = (@cart_item.item.price * 1.1).to_i
-        @cart_item = CartItem.new
+
 
         render template: 'customers/items/show'
       end
@@ -27,7 +27,6 @@ class Customers::CartItemsController < ApplicationController
       if @cart_item.quantity.to_i == 0
         @item = Item.find_by(id: @cart_item.item_id)
         @total_price = (@cart_item.item.price * 1.1).to_i
-        @cart_item = CartItem.new
 
         render template: 'customers/items/show'
       else
@@ -45,19 +44,28 @@ class Customers::CartItemsController < ApplicationController
 
   def index
     @cart_items = current_customer.cart_items
-    @tax = 1.1
   end
 
   def update
-    CartItem.find(params[:id]).update(cart_items_params)
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(cart_items_params)
     flash[:notice] = "数量を変更しました！！"
-    redirect_to cart_items_path
+    @cart_items = current_customer.cart_items
+
+    # @sum = 0
+    # @cart_items = current_customer.cart_items
+    # @cart_items.each do |cart_item|
+    #   @sum += cart_item.price * cart_item.quantity
+    # end
+
+    # redirect_to cart_items_path
   end
 
   def destroy
     CartItem.find(params[:id]).destroy
     flash[:notice] = "商品を削除しました！！"
-    redirect_to cart_items_path
+    @cart_items = current_customer.cart_items
+    # redirect_to cart_items_path
   end
 
   def all_destroy

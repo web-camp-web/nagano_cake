@@ -4,7 +4,6 @@
     <%= render 'layouts/error', obj: @cart_item %>
     </div>
     <div class="row">
-
     <div>
       <%= attachment_image_tag @item, :image, :fill, 550, 400 %>
     </div>
@@ -12,7 +11,7 @@
     <div class="item-r">
       <h3><%= @item.name %></h3>
       <p class="mt-6"><%= @item.caption %></p>
-      <p>💲<%= @total_price %>（税込）</p>
+      <p>💰<%= @total_price %>円（税込）</p>
       <div class="form-group">
         <% unless current_customer.nil? %>
           <%= form_with model: @cart_item, url: cart_items_path,local: true do |f| %>

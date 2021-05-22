@@ -101,8 +101,7 @@ body {
 }
 
 .page-small-header {
-  font-size: 17px;
-  background-color: #EEE;
+  font-size: 24px;
   disply: inline-block;
   padding: 0 2%;
   margin-left: 7%;
@@ -334,4 +333,8 @@ footer {
   padding: 20px;
   background-color: black;
   text-align: center;
+}
+
+.thead-light > tr {
+  background-color: red;
 }
