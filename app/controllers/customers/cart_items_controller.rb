@@ -15,26 +15,22 @@ class Customers::CartItemsController < ApplicationController
         flash[:notice] = "カートに追加しました！！"
         redirect_to cart_items_path
       else
-
         @item = Item.find_by(id: @cart_item.item_id)
         @total_price = (@cart_item.item.price * 1.1).to_i
-
-
         render template: 'customers/items/show'
       end
     else
       # 商品名が同じ場合、数量を合計値にする
-      if @cart_item.quantity.to_i == 0
-        @item = Item.find_by(id: @cart_item.item_id)
-        @total_price = (@cart_item.item.price * 1.1).to_i
-
-        render template: 'customers/items/show'
-      else
+      if @cart_item.save
         total_quantity = (@cart_item.quantity + cart_items_new.quantity).to_i
         cart_items_new.update(quantity: total_quantity)
         flash[:notice] = "カートに追加しました！！"
         @cart_item.destroy
         redirect_to cart_items_path
+      else
+        @item = Item.find_by(id: @cart_item.item_id)
+        @total_price = (@cart_item.item.price * 1.1).to_i
+        render template: 'customers/items/show'
       end
     end
   end
