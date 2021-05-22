@@ -276,34 +276,6 @@ a {
   }
 }
 
-/* header */
-
-header {
-  width: 100%;
-  padding: 20px;
-  background-color: black;
-  a {
-    text-decoration: none;
-    color: white;
-  }
-  a:hover {
-    text-decoration: none;
-    color: white;
-  }
-}
-
-.nav-welcome {
-  color: white;
-  margin-right: 50px;
-}
-
-.nav-right {
-  border: solid 1px;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 30px;
-}
-
 .order-submit-btn {
   text-align: center;
 }
@@ -327,4 +299,3 @@ footer {
   background-color: black;
   text-align: center;
 }
-
