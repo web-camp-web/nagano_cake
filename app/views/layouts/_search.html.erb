@@ -1,0 +1,5 @@
+<%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+  <%= f.text_field :word %>
+  <%= f.select :range, options_for_select([['Item'], ['Customer']]) %>
+  <%= f.submit "検索", class: "btn btn-dark" %>
+<% end %>
