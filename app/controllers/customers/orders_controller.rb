@@ -9,6 +9,7 @@ class Customers::OrdersController < ApplicationController
     @my_address = current_customer.address
     @deliveries = Delivery.where(customer_id: current_customer.id)
 
+
     if current_customer.cart_items.empty?
       redirect_to cart_items_path
     end
@@ -31,15 +32,20 @@ class Customers::OrdersController < ApplicationController
       @order.delivery_address = delivery.address
       @order.delivery_name = delivery.name
     when "新しい届け先"
-      @order.delivery_postcode = params[:order][:new_postcode]
-      @order.delivery_address = params[:order][:new_address]
-      @order.delivery_name = params[:order][:new_name]
-      delivery = Delivery.new
-      delivery.customer_id = current_customer.id
-      delivery.postcode = params[:order][:new_postcode]
-      delivery.address = params[:order][:new_address]
-      delivery.name = params[:order][:new_name]
-      delivery.save
+      if params[:order][:new_postcode].blank? || params[:order][:new_address].blank? || params[:order][:new_name].blank?
+        flash[:new_address_error] = "新規住所を選択時は、全ての項目を入力してください"
+        redirect_to new_order_path
+      else
+        @order.delivery_postcode = params[:order][:new_postcode]
+        @order.delivery_address = params[:order][:new_address]
+        @order.delivery_name = params[:order][:new_name]
+        delivery = Delivery.new
+        delivery.customer_id = current_customer.id
+        delivery.postcode = params[:order][:new_postcode]
+        delivery.address = params[:order][:new_address]
+        delivery.name = params[:order][:new_name]
+        delivery.save
+      end
     end
   end
 
