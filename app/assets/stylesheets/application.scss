@@ -255,11 +255,11 @@ body {
 
 
 
-  select,
-  .new_address_form {
+select {
+    .new_address_form {
     width: 70%;
+    }
   }
-
 
 .order-submit-btn {
   text-align: center;
@@ -290,4 +290,8 @@ footer {
   padding: 20px;
   background-color: black;
   text-align: center;
+}
+
+.field_with_errors {
+  display: contents;
 }
