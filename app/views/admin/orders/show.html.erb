@@ -3,6 +3,9 @@
     <h2 class="page-header">注文履歴詳細</h2>
   </div>
   <div class="row">
+    <div class="col-12">
+      <%= flash[:order_status_error] %>
+    </div>
     <div class="col-lg-4 col-md-0 col-sm-0">
       <table class="table table-borderless order-table">
         <tr>
@@ -31,45 +34,15 @@
         <tr>
           <th>注文ステータス</th>
           <td>
-            <%= form_with model: [:admin,@order], url: admin_order_path,method: :patch, local:true do |f|%>
-              <%= f.select :status, Order.statuses.keys %>
-              <%= f.submit '更新', class: "btn btn-success btn-sm order_btn"%>
-            <% end %>
+            <div class="js-order-status">
+              <%= render :template => 'admin/orders/_order_status_form', locals: { order: @order } %>
+            </div>
           </td>
         </tr>
       </table>
     </div>
-    <div class="col-lg-8 col-md-12 col-sm-12">
-      <table class="table table-borderless order-item-table">
-        <thead>
-          <tr>
-            <th>商品名</th>
-            <th>単価（税込）</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th>製作ステータス</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @order_items.each do |order_item|%>
-            <tr>
-              <td><%= order_item.item.name %></td>
-              <td><%= tax_price(order_item.item_id).to_s(:delimited) %></td>
-              <td><%= order_item.quantity %></td>
-              <td><%= order_items_sub_price(order_item.id).to_s(:delimited) %></td>
-              <%= form_with model: [:admin,order_item], url: admin_order_item_path(order_item), method: :patch, local:true do |f| %>
-                <td>
-                  <%= f.select :product_status, OrderItem.product_statuses.keys %>
-                </td>
-                <td>
-                  <%= f.submit '更新', class: "btn btn-sm btn-success order_item_btn" %>
-                </td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <div class="col-lg-8 col-md-12 col-sm-12 js-order-item">
+      <%= render :template => 'admin/orders/_order_item_table', locals: { order_items: @order_items } %>
     </div>
   </div>
 

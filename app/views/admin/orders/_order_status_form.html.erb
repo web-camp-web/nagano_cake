@@ -1,0 +1,4 @@
+<%= form_with model: [:admin,order], url: admin_order_path(order),method: :patch, local: true do |f|%>
+  <%= f.select :status, Order.statuses.keys %>
+  <%= f.submit '更新', class: "btn btn-success btn-sm order_btn"%>
+<% end %>
