@@ -299,3 +299,46 @@ footer {
 .admin-login-header {
   margin: 20% 0 5% 10%;
 }
+
+.about-header {
+  margin: 3% 0 2% 20%;
+}
+
+.about-text {
+  margin-left: 20%;
+  margin-top: 2%;
+}
+
+.item-container {
+  width: 60%;
+  margin-left: 20%;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+
+  .item-area {
+    width: 50%;
+    height: 200px;
+    background-size: cover;
+  }
+
+  .cake {
+    background-image: url(items/choco_cake.jpg);
+    background-position: 0 50%;
+  }
+
+  .creme {
+    background-image: url(items/creme-caramel.jpg);
+    background-position: 0 90%;
+  }
+
+  .candy {
+    background-image: url(items/candies.jpg);
+    background-position: 0 65%;
+  }
+
+  .pudding {
+    background-image: url(items/pudding.jpg);
+    background-position: 0 35%;
+  }
+}
