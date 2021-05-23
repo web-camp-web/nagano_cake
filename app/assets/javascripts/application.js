@@ -35,10 +35,6 @@ $(document).on('turbolinks:load', function(){
   $('.top-comment').hide().fadeIn(7000);
 });
 
-
-
-
-
 $(document).on('turbolinks:load', function () {
   $("#theTarget").skippr({
     // スライドショーの変化 ("fade" or "slide")
@@ -64,3 +60,19 @@ $(document).on('turbolinks:load', function () {
   });
 });
 
+$(document).on('turbolinks:load', function () {
+  $('.menu-trigger').on('click', function(event) {
+    $(this).toggleClass('active');
+    $('#sp-menu').fadeToggle();
+    event.preventDefault();
+    $('.menu-trigger').html('CLOSE')
+    $('.menu-trigger').addClass('active-menu')
+  });
+});
+
+$(document).on('turbolinks:load', function(){
+  $('.active-menu').on('click', function(event) {
+    $(this).html('MENU')
+    $(this).removeClass('active-menu')
+  });
+});
