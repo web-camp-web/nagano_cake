@@ -62,19 +62,14 @@ $(document).on('turbolinks:load', function () {
 
 $(document).on('turbolinks:load', function () {
   $('.menu-trigger').on('click', function(event) {
-    $(this).toggleClass('active');
+    $(this).toggleClass('active active-menu');
     $('#sp-menu').fadeToggle();
     event.preventDefault();
-    $('.menu-trigger').html('CLOSE')
-    $('.menu-trigger').addClass('active-menu')
-    return false;
-  });
-});
-
-$(document).on('turbolinks:load', function(){
-  $('.active-menu').on('click', function(event) {
-    $(this).html('MENU')
-    $(this).removeClass('active-menu')
+    if($(this).hasClass('active-menu')) {
+      $('.menu-trigger').html('CLOSE')
+    } else {
+      $('.menu-trigger').html('MENU')
+    }
     return false;
   });
 });
