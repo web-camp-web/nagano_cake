@@ -1,0 +1,19 @@
+<div>
+  <h2 class="page-header">商品一覧 <%= @items.count %>件</h2>
+  <div class="container item-main">
+    <div class="row text-center">
+      <% @items.each do |item| %>
+        <div class="items-box">
+          <%= link_to item_path(item.id) do %>
+            <%= attachment_image_tag item, :image, :fill, 200, 200 %><br>
+            <%= item.name %><br>
+          <% end %>
+          <%= (item.price).to_s(:delimited) %>円
+        </div>
+      <% end %>
+    </div>
+    <div class="row offset-5 paginate">
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>

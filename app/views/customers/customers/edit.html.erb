@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <h2 class="page-header mypage-edit">会員情報編集</h2>
+  </div>
+  <%= form_with model: @customer, url: customer_path, local:true do |f| %>
+    <%= render "layouts/error", obj: @customer %>
+    <div class="row form-group mt-4">
+      <%= f.label :"氏名", class: "col-form-label col-form-label-sm col-2" %>
+      <%= f.text_field :last_name, class: "form-control form-control-sm col-2" %>
+      <%= f.text_field :first_name, class: "form-control form-control-sm col-2 offset-1" %>
+    </div>
+    <div class="row form-group">
+      <%= f.label :"フリガナ", class: "col-form-label col-form-label-sm col-2" %>
+      <%= f.text_field :last_name_kana, class: "form-control form-control-sm col-2" %>
+      <%= f.text_field :first_name_kana, class: "form-control form-control-sm col-2 offset-1" %>
+    </div>
+    <div class="row form-group">
+      <%= f.label :"郵便番号", class: "col-form-label col-form-label-sm col-2" %>
+      <%= f.text_field :postcode, class: "form-control form-control-sm col-2" %>
+    </div>
+    <div class="row form-group">
+      <%= f.label :"住所", class: "col-form-label col-form-label-sm col-2" %>
+      <%= f.text_field :address, class: "form-control form-control-sm col-7" %>
+    </div>
+    <div class="row form-group">
+      <%= f.label :"電話番号", class: "col-form-label col-form-label-sm col-2" %>
+      <%= f.text_field :phone_number, class: "form-control form-control-sm col-2" %>
+    </div>
+    <div class="row form-group">
+      <%= f.label :"メールアドレス", class: "col-form-label col-form-label-sm col-2" %>
+      <%= f.text_field :email, class: "form-control form-control-sm col-2" %>
+    </div>
+    <div class="row form-group mt-4">
+      <%= f.submit "編集内容を保存", class: "btn btn-success btn-sm col-3 offset-2" %>
+      <%= link_to "退会する", destroy_confirm_path(@customer.id), class: "btn btn-danger btn-sm col-1 offset-2" %>
+    </div>
+  <% end %>
+</div>

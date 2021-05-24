@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <h3 class="admin-login-header">管理者ログイン</h3>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-2 col-md-1 col-sm-0"></div>
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= flash[:alert] %>
+        <%= render "admins/shared/error_messages", resource: resource %>
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <th>メールアドレス</th>
+              <th><%= f.email_field :email, autofocus: true, autocomplete: "email", size: "50x50" %></th>
+            </tr>
+            <tr>
+              <th>パスワード</th>
+              <th><%= f.password_field :password, autocomplete: "current-password", size: "50x50" %></th>
+            </tr>
+            <tr>
+              <th></th>
+              <th>
+                <%= f.submit "ログイン", class: "btn btn-primary" %>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

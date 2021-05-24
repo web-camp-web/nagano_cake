@@ -1,0 +1,69 @@
+<header>
+  <nav class="navbar navbar-expand-lg ">
+    <%= link_to " NAGANO-CAKE ~since 1960~", root_path, class: "navbar-brand header-logo" %>
+    <div id="sp-menu">
+      <% if customer_signed_in? %>
+        <ul class="menu">
+          <li class="nav-welcome">
+            ようこそ、<%= current_customer.last_name %>さん！
+          </li>
+          <li>
+            <%= link_to "My page", customer_path(current_customer), class: " nav-right"%>
+          </li>
+          <li>
+            <%= link_to "Items", items_path, class: "nav-right" %>
+          </li>
+          <li>
+            <%= link_to "Cart", cart_items_path, class: "nav-right" %>
+          </li>
+          <li>
+            <%= link_to "Log out", destroy_customer_session_path, method: :delete, class: "nav-right" %>
+          </li>
+        </ul>
+      <% elsif admin_signed_in? %>
+        <div class=" ml-auto admin-header">
+          <ul class="admin-menu">
+            <li>
+              <%= link_to "Items",admin_items_path, class: "nav-right" %>
+            </li>
+            <li>
+              <%= link_to "Customers", admin_customers_path, class: "nav-right" %>
+            </li>
+            <li>
+              <%= link_to "Orders", admin_orders_path, class: "nav-right" %>
+            </li>
+            <li>
+              <%= link_to "Genres", admin_genres_path, class: "nav-right" %>
+            </li>
+            <li>
+              <%= link_to "Log out", destroy_admin_session_path, method: :delete, class: "nav-right" %>
+            </li>
+            <li>
+              <%= render "layouts/search" %>
+            </li>
+          </ul>
+        </div>
+      <% else %>
+        <ul class="menu">
+          <li>
+            <%= link_to "About", about_path, class: "nav-right" %>
+          </li>
+          <li>
+            <%= link_to "Items", items_path, class: "nav-right" %>
+          </li>
+          <li>
+            <%= link_to "Sign up", new_customer_registration_path, class: "nav-right" %>
+          </li>
+          <li>
+            <%= link_to "Log in", new_customer_session_path, class: "nav-right" %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </nav>
+  <div id="hm-icon">
+    <a class="menu-trigger" href="#">
+      MENU
+    </a>
+  </div>
+</header>

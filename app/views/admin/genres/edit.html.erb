@@ -1,0 +1,17 @@
+<div class="container">
+<h2 class="page-header">ジャンル編集</h2>
+  <div class="row">
+    <%= render 'layouts/error', obj: @genre %>
+  </div>
+  <div class="row form-group offset-2">
+    <div class="col">
+      <tr>
+        <%= form_with model: [:admin, @genre],method: :put, local: true do |f| %>
+          <th>ジャンル名</th>
+          <th><%= f.text_field :name, class:"offset-1"%></th>
+          <th><%= f.submit "変更を保存", class: 'btn btn-success' %></th>
+        <% end %>
+      </tr>
+    </div>
+  </div>
+</div>

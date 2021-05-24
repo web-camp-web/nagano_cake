@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <h2 class="page-header">注文履歴詳細</h2>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p class="error-flash"><%= flash[:order_status_error] %></p>
+    </div>
+    <div class="col-lg-4 col-md-0 col-sm-0">
+      <table class="table table-borderless order-table">
+        <tr>
+         <th>購入者</th>
+         <td>
+           <%= link_to admin_customer_path(@order.customer) do %>
+             <%= customer_full_name(@order.customer.id) %>
+           <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>注文日</th>
+          <td><%= @order.created_at.strftime('%Y/%m/%d')%></td>
+        </tr>
+        <tr>
+          <th>配送先</th>
+          <td>
+            <%= delivery_full_address(@order.id) %></br>
+            <%= @order.delivery_name %>
+          </td>
+        </tr>
+        <tr>
+          <th>支払方法</th>
+          <td><%= @order.payment_method %></td>
+        </tr>
+        <tr>
+          <th>注文ステータス</th>
+          <td>
+            <div class="js-order-status">
+              <%= render :template => 'admin/orders/_order_status_form', locals: { order: @order } %>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-lg-8 col-md-12 col-sm-12 js-order-item">
+      <%= render :template => 'admin/orders/_order_item_table', locals: { order_items: @order_items } %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <table class="table table-borderless">
+        <tr>
+          <th>商品合計</th>
+          <td><%= (@order.total_price - postage).to_s(:delimited) %>円</td>
+        </tr>
+        <tr>
+          <th>送料</th>
+          <td><%= postage %>円</td>
+        </tr>
+        <tr>
+          <th>請求金額合計</th>
+          <td><%= (@order.total_price).to_s(:delimited) %>円</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-4"></div>
+  </div>
+  <div class="row under-area"></div>
+</div>

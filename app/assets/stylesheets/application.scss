@@ -1,0 +1,432 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Corben:700');
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header-logo {
+  font-family: 'Homemade Apple', cursive;
+}
+
+header{
+  background-color: #222222;
+  font-family: "Sawarabi Mincho";
+  position: relative;
+}
+
+.paginate {
+  margin-top: 10%;
+}
+
+body {
+  background: radial-gradient(rgba(128, 0, 0, .4), rgba(0, 0, 0, .4)),
+  url(top/glass-1502835_1920.jpg);
+  background-size: cover;
+  font-family: "Sawarabi Mincho";
+  color: #f8f9fa;
+}
+
+a {
+   color: #daa520;
+ }
+
+.page-header {
+  font-size: 42px;
+  disply: inline-block;
+  padding: 0 2%;
+  margin-top: 40px;
+}
+
+/*customer top*/
+.top-container{
+  height: 100%;
+  padding: 15px 0;
+  background: linear-gradient(-135deg, #990000, #222222);
+  padding-bottom: 50px;
+}
+
+
+.image1 {
+  background-image: url('top/tina-guina-s8_7AqkzCWY-unsplash.jpg');
+}
+.image2 {
+  background-image: url('top/brownie-548591_1920.jpg');
+}
+.image3 {
+  background-image: url('top/massimo-adami-YtLmmY2ok-4-unsplash.jpg');
+}
+.image4 {
+  background-image: url('top/coffee-4078471_1920.jpg');
+}
+.image5 {
+  background-image: url('top/praline-2966091_1920.jpg');
+}
+
+.image_box {
+  height: 500px;
+}
+
+/*customer sign_up*/
+.sign-up-header {
+  margin-left: 5%;
+}
+
+.sign-up-leading {
+  margin-top: 1.5%;
+  margin-left: 10%;
+}
+
+/*customer sign_in*/
+.sign-in-header {
+  margin-left: 5%;
+}
+
+.page-small-header {
+  font-size: 24px;
+  disply: inline-block;
+  padding: 0 2%;
+  margin-left: 7%;
+}
+
+.customer-sign-in-label {
+  margin-left: 13%;
+}
+
+.customer-sign-in-btn {
+  margin-top: 1%;
+  margin-left: 29.7%;
+  width: 135px;
+}
+
+.sign-in-leading {
+  margin-top: 1.5%;
+  margin-left: 19%;
+}
+
+/*customer info*/
+
+.mypage {
+  margin-left: 13%;
+}
+
+.customer-info {
+  margin-top: 2%;
+}
+
+.customer-info-table {
+  table-layout: fixed;
+  th {
+    width: 15%;
+    background-color: #EEE;
+    border: solid 1px;
+  }
+  td {
+    width: 40%;
+    border: solid 1px;
+    overflow: scroll;
+  }
+}
+
+.customer-strong {
+  font-size: 19px;
+}
+
+.customer-edit-btn{
+  padding: 0.3% 2.3%;
+  margin-left: 3%;
+}
+
+.customer-info-btn {
+  padding: 0.3% 3.6%;
+  margin-left: -5%;
+}
+
+/*customer edit*/
+.mypage-edit {
+  margin-left: 5%;
+}
+
+/*customer delivery_index*/
+.delivery-index {
+  margin-left: 13%;
+}
+
+.delivery-new {
+  margin-top: 3%;
+  margin-left: 3%;
+}
+
+.delivery-new-btn {
+  padding: 0.3% 2.8%;
+
+}
+
+.delivery-info {
+  margin-top: 5%;
+}
+
+.delivery-table {
+  table-layout: fixed;
+  th {
+    background-color: #EEE;
+    border: solid 1px;
+  }
+  td {
+    overflow: scroll;
+    border: solid 1px;
+  }
+}
+
+.delivery-postcode {
+  width: 15%;
+}
+
+.delivery-address {
+  width: 38%;
+
+}
+
+.delivery-name {
+  width: 15%;
+}
+
+/*customer delivery_edit*/
+.delivery-edit {
+  margin-left: 8%;
+}
+
+.delivery-edit-btn {
+  padding: 0.3% 1.5%;
+}
+
+.page-area {
+  padding-bottom: 20px;
+}
+
+.table {
+  color: #f8f9fa;
+  background-color: #BB0000;
+  text-align: center;
+
+  thead,th {
+    background-color: #333333;
+  }
+
+  th,td {
+    vertical-align: middle;
+  }
+
+  tr:hover {
+    td {
+      background-color: #ff4b07d1;
+      color: #f8f9fa;
+    }
+  }
+}
+
+
+  select {
+    .new_address_form {
+    width: 70%;
+    }
+  }
+
+.order-submit-btn {
+  text-align: center;
+}
+
+.thanks-page {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-confirm-table {
+  th {
+    width: 25%;
+  }
+}
+
+body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 125vh;
+}
+
+footer {
+  margin-top: auto;
+  width: 100%;
+  padding: 20px;
+  background-color: black;
+  text-align: center;
+}
+
+.error-flash {
+  color: red;
+}
+
+.admin-login-header {
+  margin: 20% 0 5% 10%;
+}
+
+.about-header {
+  margin: 3% 0 2% 20%;
+}
+
+.about-text {
+  margin-left: 20%;
+  margin-top: 2%;
+}
+
+.item-container {
+  width: 60%;
+  margin-left: 20%;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+
+  .item-area {
+    width: 50%;
+    height: 200px;
+    background-size: cover;
+  }
+
+  .cake {
+    background-image: url(items/choco_cake.jpg);
+    background-position: 0 50%;
+  }
+
+  .creme {
+    background-image: url(items/creme-caramel.jpg);
+    background-position: 0 90%;
+  }
+
+  .candy {
+    background-image: url(items/candies.jpg);
+    background-position: 0 65%;
+  }
+
+  .pudding {
+    background-image: url(items/pudding.jpg);
+    background-position: 0 35%;
+  }
+}
+
+
+.field_with_errors {
+  display: contents;
+}
+
+.pagination {
+  margin: 60px;
+}
+
+.destroy-confirm-text {
+  margin-top: 15%;
+}
+
+#hm-icon {
+  position: absolute;
+  right: 3vw;
+  top: 1vh;
+  z-index: 100;
+}
+
+.menu-trigger {
+  font-family: 'Homemade Apple', cursive;
+  font-size: 25px;
+}
+
+#sp-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000000bf;
+  color: #fff;
+  width: 100%;
+  min-height: 100%;
+  display: none;
+  z-index: 99;
+}
+
+#sp-menu li {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#sp-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.admin-menu {
+  position: absolute;
+  left: 38%;
+  top: 15%;
+  list-style: none;
+
+  a {
+    font-size: 35px;
+  }
+}
+
+.menu {
+  position: absolute;
+  left: 45%;
+  top: 20%;
+  list-style: none;
+
+  a {
+    font-size: 35px;
+  }
+}
+
+.search-result {
+  margin-top: 5%;
+}
+
+.address-form {
+  width: 50%;
+}
+
+.active-menu {
+  position: fixed;
+  right: 3vw;
+  top: 1vh;
+}
+
+.order-table {
+   table-layout: fixed;
+  th {
+    width: 40%;
+  }
+  td {
+    width: 60%;
+    overflow: scroll;
+  }
+}

@@ -1,0 +1,12 @@
+<div class="container">
+  
+  <h2 class="page-header">商品一覧</h2>
+  <div class="item-new">
+    <%= link_to "商品作成はこちら", new_admin_item_path %>
+  </div>
+  <%= render 'admin/items/item_list', items: @items %>
+
+  <div class="row offset-5">
+    <%= paginate @items %>
+  </div>
+</div>

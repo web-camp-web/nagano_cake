@@ -1,0 +1,50 @@
+<div class="top-container">
+  <div class="top-title">
+    <h1>NAGANO-CAKE</h1>
+  </div>
+<div class="container">
+  <div class="row slide-box">
+    <div class="col-md-12 text-center">
+      <div class="image_box">
+        <div id="theTarget">
+          <div class="image1"></div>
+          <div class="image2"></div>
+          <div class="image3"></div>
+          <div class="image4"></div>
+          <div class="image5"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="top-comment">
+    <p>「食」を楽しみ、心も体も豊かになっていただきたい。お菓子づくりは、その思いの表現のひとつと考えています。<br>
+    伝統的な古き良きものを見直しながら、そして日本らしさを大切にしながら。<br>
+    時代と共に変化していくことを恐れず、常に新しい価値観のもと、探求・創造を続けています</p>
+  </div>
+  </div>
+  </div>
+  <div class="main-container">
+    <div class="main-title">
+      <h2>〜NEW〜</h2>
+    </div>
+  <div class="container">
+  <div class="main-box">
+    <div class="row">
+      <% @items.each do |item| %>
+
+      <div class="item-box text-center">
+        <strong class="col-3">
+          <div class="image-link"><%= link_to item_path(item.id) do %>
+            <%= attachment_image_tag item, :image, :fill, 250, 250, alt: "item-image" %></div>
+          <% end %>
+          <p class="pt-5"><%= item.name %></p>
+          <p><%= (item.price).to_s(:delimited) %>円</p>
+        </strong>
+      </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+</div>

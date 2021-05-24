@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="row">
+    <h2 class="page-header">注文情報確認</h2>
+  </div>
+  <div calss="row">
+    <table class="table table-borderless order-item-table">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td>
+              <%= attachment_image_tag cart_item.item, :image, :fill, 60, 60, alt: "item-image" %>
+              <%= cart_item.item.name %>
+            </td>
+            <td>
+              <%= tax_price(cart_item.item_id).to_s(:delimited) %>
+            </td>
+            <td>
+                <%= cart_item.quantity %>
+            </td>
+            <td>
+              <%= sub_price(cart_item.id).to_s(:delimited) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <div class="col-5">
+      <table class="table table-borderless">
+        <tr>
+          <th class="table-active">送料</th>
+          <td><%= postage %></td>
+        </tr>
+        <tr>
+          <th class="table-active">商品合計</th>
+          <td><%= cart_items_total_price(current_customer.id).to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <th class="table-active">請求金額</th>
+          <td><%= billing(current_customer.id).to_s(:delimited) %></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-7">
+      <table class="table table-borderless order-confirm-table">
+        <tr>
+          <th>支払方法</th>
+          <td>
+            <%= @order.payment_method %>
+          </td>
+        </tr>
+        <tr>
+          <th>お届け先</th>
+          <td>
+            <%= "〒#{@order.delivery_postcode} #{@order.delivery_address}" %></br>
+            <%= @order.delivery_name %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+    <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+      <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <%= f.hidden_field :delivery_postcode %>
+      <%= f.hidden_field :delivery_address %>
+      <%= f.hidden_field :delivery_name %>
+      <%= f.hidden_field :payment_method %>
+      <%= f.hidden_field :total_price, :value => billing(current_customer.id) %>
+      <%= f.hidden_field :postage, :value => postage %>
+      <div class="order-submit-btn">
+      <%= f.submit "注文を確定する", class: "btn btn-success" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
