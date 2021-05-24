@@ -9,6 +9,16 @@ ja:
         unauthenticated: '管理者ログインを行ってください'
 
   activerecord:
+    models:
+      admin: '管理者'
+      customer: '顧客'
+      delivery: '配送先'
+      item: '商品'
+      genre: 'ジャンル'
+      cart_item: 'カート内商品'
+      order: '注文'
+      order_item: '注文商品'
+
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -38,6 +48,9 @@ ja:
         name: 商品名
         caption: 説明文
         price: 価格
+        genre: ジャンル
+        genre_id: ジャンル
+        image: 画像
       genre:
         name: ジャンル名
       cart_item:

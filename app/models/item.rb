@@ -7,7 +7,7 @@ class Item < ApplicationRecord
 
   attachment :image
 
-  validates :name, :genre_id, :image, :caption, :price, presence: true
+  validates :name, :genre, :image, :caption, :price, presence: true
 
   def self.looks(word)
     return none if word.blank?
