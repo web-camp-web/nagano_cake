@@ -1,8 +1,12 @@
 ja:
   devise:
+    sessions:
+      customer:
+        signed_in: 'ログインを行ってください'
     failure:
       admin:
         invalid: '必須項目を入力してください。'
+        unauthenticated: '管理者ログインを行ってください'
 
   activerecord:
     errors:
