@@ -30,7 +30,7 @@ end
 end
 
 Admin.create!(
-    email: ENV['admin_mail'],
+    email: ENV['admin_email'],
     password: ENV['admin_psw']
   )
 
