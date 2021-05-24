@@ -378,15 +378,9 @@ footer {
   font-weight: bold;
 }
 
-.search-form {
-  position: absolute;
-  left: 40%;
-  top: 50%;
-}
-
 .admin-menu {
   position: absolute;
-  left: 45%;
+  left: 38%;
   top: 15%;
   list-style: none;
 
@@ -404,4 +398,12 @@ footer {
   a {
     font-size: 35px;
   }
+}
+
+.search-result {
+  margin-top: 5%;
+}
+
+.address-form {
+  width: 50%;
 }

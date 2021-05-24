@@ -22,11 +22,6 @@
         </ul>
       <% elsif admin_signed_in? %>
         <div class=" ml-auto admin-header">
-          <ul class="search-form">
-            <li class="nav navbar-nav ml-auto">
-              <%= render "layouts/search" %>
-            </li>
-          </ul>
           <ul class="admin-menu">
             <li>
               <%= link_to "Items",admin_items_path, class: "nav-right" %>
@@ -42,6 +37,9 @@
             </li>
             <li>
               <%= link_to "Log out", destroy_admin_session_path, method: :delete, class: "nav-right" %>
+            </li>
+            <li>
+              <%= render "layouts/search" %>
             </li>
           </ul>
         </div>
