@@ -3,6 +3,7 @@
     <h2 class="page-header delivery-edit">配送先編集</h2>
   </div>
       <%= form_with model: @delivery, url: delivery_path, method: :patch, local: true do |f| %>
+        <%= render "layouts/error", obj: @delivery %>
         <div class="row form-group mt-4">
           <%= f.label :"郵便番号(ハイフンなし)", class: "col-form-label col-form-label-sm col-2" %>
           <%= f.text_field :postcode, class: "form-control form-control-sm col-2"  %>

@@ -38,5 +38,4 @@ devise_for :admins, controllers: {
     get 'about' => 'homes#about'
  end
 
-
 end

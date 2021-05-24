@@ -26,10 +26,18 @@
   box-sizing: border-box;
 }
 
+.header-logo {
+  font-family: 'Homemade Apple', cursive;
+}
 
 header{
   background-color: #222222;
-  font-family: 'Homemade Apple', cursive;
+  font-family: "Sawarabi Mincho";
+  position: relative;
+}
+
+.paginate {
+  margin-top: 10%;
 }
 
 body {
@@ -38,17 +46,14 @@ body {
   background-size: cover;
   font-family: "Sawarabi Mincho";
   color: #f8f9fa;
-  // display: flex;
-  // flex-flow: column;
-  // min-height: 100vh;
-  // position: relative;
-  // box-sizing: border-box;
-  // height: 100%;
 }
+
+a {
+   color: #daa520;
+ }
 
 .page-header {
   font-size: 42px;
-  // background-color: #ff8d00b3;
   disply: inline-block;
   padding: 0 2%;
   margin-top: 40px;
@@ -82,8 +87,6 @@ body {
 .image_box {
   height: 500px;
 }
-
-
 
 /*customer sign_up*/
 .sign-up-header {
@@ -222,9 +225,6 @@ body {
   padding-bottom: 20px;
 }
 
-
-
-
 .table {
   color: #f8f9fa;
   background-color: #BB0000;
@@ -247,15 +247,7 @@ body {
 }
 
 
-
-// a {
-//   color: #faff00;
-//   text-decoration: underline;
-// }
-
-
-
-select {
+  select {
     .new_address_form {
     width: 70%;
     }
@@ -277,6 +269,7 @@ select {
     width: 25%;
   }
 }
+
 body,
 #wrapper {
   display: flex;
@@ -292,10 +285,137 @@ footer {
   text-align: center;
 }
 
+.error-flash {
+  color: red;
+}
+
+.admin-login-header {
+  margin: 20% 0 5% 10%;
+}
+
+.about-header {
+  margin: 3% 0 2% 20%;
+}
+
+.about-text {
+  margin-left: 20%;
+  margin-top: 2%;
+}
+
+.item-container {
+  width: 60%;
+  margin-left: 20%;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+
+  .item-area {
+    width: 50%;
+    height: 200px;
+    background-size: cover;
+  }
+
+  .cake {
+    background-image: url(items/choco_cake.jpg);
+    background-position: 0 50%;
+  }
+
+  .creme {
+    background-image: url(items/creme-caramel.jpg);
+    background-position: 0 90%;
+  }
+
+  .candy {
+    background-image: url(items/candies.jpg);
+    background-position: 0 65%;
+  }
+
+  .pudding {
+    background-image: url(items/pudding.jpg);
+    background-position: 0 35%;
+  }
+}
+
+
 .field_with_errors {
   display: contents;
 }
 
 .pagination {
   margin: 60px;
+
+.destroy-confirm-text {
+  margin-top: 15%;
+}
+
+#hm-icon {
+  position: absolute;
+  right: 3vw;
+  top: 1vh;
+  z-index: 100;
+}
+
+.menu-trigger {
+  font-family: 'Homemade Apple', cursive;
+  font-size: 25px;
+}
+
+#sp-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000000bf;
+  color: #fff;
+  width: 100%;
+  min-height: 100%;
+  display: none;
+  z-index: 99;
+}
+
+#sp-menu li {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#sp-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.admin-menu {
+  position: absolute;
+  left: 38%;
+  top: 15%;
+  list-style: none;
+
+  a {
+    font-size: 35px;
+  }
+}
+
+.menu {
+  position: absolute;
+  left: 45%;
+  top: 20%;
+  list-style: none;
+
+  a {
+    font-size: 35px;
+  }
+}
+
+.search-result {
+  margin-top: 5%;
+}
+
+.address-form {
+  width: 50%;
+}
+
+.active-menu {
+  position: fixed;
+  right: 3vw;
+  top: 1vh;
+
 }

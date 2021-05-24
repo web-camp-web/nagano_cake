@@ -3,6 +3,7 @@
     <h2 class="page-header mypage-edit">会員情報編集</h2>
   </div>
   <%= form_with model: @customer, url: customer_path, local:true do |f| %>
+    <%= render "layouts/error", obj: @customer %>
     <div class="row form-group mt-4">
       <%= f.label :"氏名", class: "col-form-label col-form-label-sm col-2" %>
       <%= f.text_field :last_name, class: "form-control form-control-sm col-2" %>
