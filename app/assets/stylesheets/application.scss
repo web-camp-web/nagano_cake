@@ -246,6 +246,7 @@ a {
   }
 }
 
+
   select {
     .new_address_form {
     width: 70%;
@@ -335,9 +336,13 @@ footer {
   }
 }
 
+
 .field_with_errors {
   display: contents;
 }
+
+.pagination {
+  margin: 60px;
 
 .destroy-confirm-text {
   margin-top: 15%;
@@ -412,4 +417,5 @@ footer {
   position: fixed;
   right: 3vw;
   top: 1vh;
+
 }

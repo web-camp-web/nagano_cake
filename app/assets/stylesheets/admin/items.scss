@@ -2,11 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.item-new {
+  padding: 0 0 15px 80%;
+  font-size: 20px;
+}
 
 .item-caption {
-  padding: 10px 0 0 150px;
+  padding: 50px 0 0 220px;
 }
 
 .item-li {
   padding-left: 50px;
+}
+
+.item-show{
+  width: 35%;
+}
+.item-caption {
+  width: 65%;
+}
+
+.item-caption > .btn {
+  margin: 20px 0 0 180px;
 }
