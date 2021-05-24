@@ -19,9 +19,9 @@ DMMWEBCAMPのチーム開発課題で作成しました。
 
 <img width="610" alt="customer" src="https://user-images.githubusercontent.com/78312000/119121828-d7833f00-ba68-11eb-93c9-a7b4925e9281.png">
 
-#工夫した箇所
-1.Javascriptを用いたデザイン性、機能性の向上(TOP画面、ヘッダー)  
-2.RSpecによるテストの自動化  
+# 工夫した箇所
+1.Javascriptを用いたデザイン性、機能性の向上(TOP画面、ヘッダー)
+2.RSpecによるテストの自動化
 3.エラーメッセージの日本語化
 
 # 機能
