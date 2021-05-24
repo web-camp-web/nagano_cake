@@ -4,11 +4,11 @@
     <%= render 'layouts/error', obj: @cart_item %>
     </div>
     <div class="row">
-    <div class="col-12 mb-5">
+    <div class="col-6 mr-5">
       <%= attachment_image_tag @item, :image, :fill, 550, 400 %>
     </div>
 
-    <div class="col-12">
+    <div class="col-5 mt-5">
       <h3><%= @item.name %></h3>
       <p><%= @item.caption %></p>
       <p><%= @total_price %>円（税込）</p>
