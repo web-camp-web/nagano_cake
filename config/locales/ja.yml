@@ -1,4 +1,9 @@
 ja:
+  devise:
+    failure:
+      admin:
+        invalid: '必須項目を入力してください。'
+
   activerecord:
     errors:
       messages:
@@ -135,7 +140,7 @@ ja:
   errors:
     format: "%{attribute}%{message}"
     messages:
-      not_saved: 情報が登録できませんでした
+      not_saved: 入力内容をご確認ください
       accepted: を受諾してください
       blank: を入力してください
       confirmation: と%{attribute}の入力が一致しません

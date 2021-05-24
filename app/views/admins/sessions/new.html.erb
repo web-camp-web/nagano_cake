@@ -7,6 +7,7 @@
     <div class="col-lg-2 col-md-1 col-sm-0"></div>
     <div class="col-lg-8 col-md-10 col-sm-12">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= flash[:alert] %>
         <%= render "admins/shared/error_messages", resource: resource %>
         <table class="table table-borderless">
           <tbody>
