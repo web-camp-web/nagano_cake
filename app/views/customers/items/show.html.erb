@@ -11,7 +11,7 @@
     <div class="col-5 mt-5">
       <h3><%= @item.name %></h3>
       <p><%= @item.caption %></p>
-      <p><%= @total_price %>円（税込）</p>
+      <p><%= (@total_price).to_s(:delimited) %>円（税込）</p>
       <div class="form-group">
         <% unless current_customer.nil? %>
           <%= form_with model: @cart_item, url: cart_items_path,local: true do |f| %>
