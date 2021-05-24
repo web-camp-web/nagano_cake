@@ -30,8 +30,8 @@ end
 end
 
 Admin.create!(
-    email: ENV['admin_mail'],
-    password: ENV['admin_psw']
+    email: "admin@test.com",
+    password: "admintest"
   )
 
 Genre.create!(
