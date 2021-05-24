@@ -4,6 +4,7 @@
   </div>
   <div class="delivery-new">
     <%= form_with model: @delivery, url: deliveries_path, local: true do |f| %>
+      <%= render "layouts/error", obj: @delivery %>
       <div class="row form-group">
         <%= f.label :"郵便番号(ハイフンなし)", class: "col-form-label col-form-label-sm col-2" %>
         <%= f.text_field :postcode, class: "form-control form-control-sm col-2" %>
