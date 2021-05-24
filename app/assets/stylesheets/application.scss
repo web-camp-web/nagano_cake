@@ -420,3 +420,14 @@ footer {
   top: 1vh;
 
 }
+
+.order-table {
+   table-layout: fixed;
+  th {
+    width: 40%;
+  }
+  td {
+    width: 60%;
+    overflow: scroll;
+  }
+}
