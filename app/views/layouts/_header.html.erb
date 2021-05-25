@@ -5,7 +5,7 @@
       <% if customer_signed_in? %>
         <ul class="menu">
           <li class="nav-welcome">
-            ようこそ、<%= current_customer.last_name %>さん！
+            ようこそ、<%= current_customer.last_name %>さん
           </li>
           <li>
             <%= link_to "My page", customer_path(current_customer), class: " nav-right"%>
